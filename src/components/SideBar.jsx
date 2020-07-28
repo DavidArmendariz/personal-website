@@ -3,6 +3,7 @@ import { Grid, makeStyles, Typography } from '@material-ui/core';
 import * as colors from '../theme/colors';
 import ImageAvatar from './ImageAvatar';
 import SocialMedia from './SocialMedia';
+import { Link } from 'react-router-dom';
 
 const SideBar = () => {
   const classes = useStyles();
@@ -24,7 +25,9 @@ const SideBar = () => {
         <Grid item>
           <SocialMedia />
         </Grid>
-        <Grid item>Test</Grid>
+        <Grid item>
+          <Link to="/portfolio">Portfolio</Link>
+        </Grid>
       </Grid>
     </Grid>
   );
