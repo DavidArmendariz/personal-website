@@ -1,2 +1,3 @@
-export const sidebar = '#51A554';
+export const sidebar = '#58b689';
 export const white = '#fff';
+export const black = '#000';
