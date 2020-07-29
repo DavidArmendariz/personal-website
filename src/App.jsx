@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import SideBar from './components/SideBar';
-import { Grid, Hidden } from '@material-ui/core';
+import { Grid, Hidden, makeStyles } from '@material-ui/core';
 import Home from './pages/Home';
 import { Route, Switch } from 'react-router-dom';
 import Portfolio from './pages/Portfolio';
@@ -8,6 +8,7 @@ import NotFound from './pages/NotFound';
 import CustomAppBar from './components/CustomAppBar';
 
 function App() {
+  const classes = useStyles();
   return (
     <Fragment>
       <Hidden mdUp>
@@ -15,7 +16,7 @@ function App() {
           <CustomAppBar />
         </Grid>
       </Hidden>
-      <Grid container>
+      <Grid container className={classes.root}>
         <Hidden smDown>
           <Grid item>
             <SideBar />
@@ -34,3 +35,9 @@ function App() {
 }
 
 export default App;
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexWrap: 'nowrap',
+  },
+}));

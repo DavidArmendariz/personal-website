@@ -5,9 +5,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import WorkIcon from '@material-ui/icons/Work';
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Person';
-import * as colors from '../theme/colors';
 
 const Links = () => {
   return (
@@ -19,9 +17,8 @@ const Links = () => {
 };
 
 const CustomLink = ({ path, text, Icon }) => {
-  const classes = useStyles();
   return (
-    <Link className={classes.link} to={path}>
+    <Link to={path}>
       <ListItem>
         <ListItemIcon>{Icon}</ListItemIcon>
         <ListItemText primary={text} />
@@ -31,10 +28,3 @@ const CustomLink = ({ path, text, Icon }) => {
 };
 
 export default Links;
-
-const useStyles = makeStyles((theme) => ({
-  link: {
-    textDecoration: 'none',
-    color: colors.black,
-  },
-}));
