@@ -37,7 +37,7 @@ const CustomAppBar = () => {
         open={showDrawer}
         onClose={toggleDrawer}
         onOpen={toggleDrawer}>
-        <div className={classes.sidebar}>
+        <div className={classes.sidebar} onClick={toggleDrawer}>
           <SideBarContent />
         </div>
       </SwipeableDrawer>
@@ -50,7 +50,7 @@ export default CustomAppBar;
 const useStyles = makeStyles((theme) => ({
   root: {
     flex: 1,
-    backgroundColor: colors.sidebar,
+    backgroundColor: colors.green,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   drawer: {
-    background: colors.sidebar,
+    background: colors.green,
   },
   sidebar: {
     width: 'auto',

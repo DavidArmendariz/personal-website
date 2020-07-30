@@ -1,16 +1,16 @@
 import React from 'react';
-import { Grid, makeStyles } from '@material-ui/core';
+import { makeStyles, Grid } from '@material-ui/core';
 
-const Portfolio = () => {
+const Resume = () => {
   const classes = useStyles();
   return (
     <Grid container className={classes.root}>
-      Portfolio
+      Resume
     </Grid>
   );
 };
 
-export default Portfolio;
+export default Resume;
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -46,6 +46,8 @@ const useStyles = makeStyles((theme) => ({
   name: {
     color: colors.white,
     textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 20,
   },
   aboutMe: {
     color: colors.white,

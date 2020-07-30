@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router-dom';
 import Portfolio from './pages/Portfolio';
 import NotFound from './pages/NotFound';
 import CustomAppBar from './components/CustomAppBar';
+import Resume from './pages/Resume';
 
 function App() {
   const classes = useStyles();
@@ -26,6 +27,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/portfolio" component={Portfolio} />
+            <Route exact path="/resume" component={Resume} />
             <Route path="*" component={NotFound} />
           </Switch>
         </Grid>

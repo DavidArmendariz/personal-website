@@ -16,7 +16,7 @@ export default SideBar;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: colors.sidebar,
+    backgroundColor: colors.green,
     height: '100vh',
     width: 400,
   },
