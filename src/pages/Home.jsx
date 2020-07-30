@@ -11,6 +11,7 @@ import * as colors from '../theme/colors';
 import WorkIcon from '@material-ui/icons/Work';
 import { Link } from 'react-router-dom';
 import DescriptionIcon from '@material-ui/icons/Description';
+import SkillsContainer from '../components/SkillsContainer';
 
 const Home = () => {
   const classes = useStyles();
@@ -74,6 +75,9 @@ const Home = () => {
             matter what the subject is. Below is a quick overview of my main
             technical skill sets and technologies I have used during my career.
           </Box>
+        </Grid>
+        <Grid container>
+          <SkillsContainer />
         </Grid>
       </Grid>
     </Grid>
