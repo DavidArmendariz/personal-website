@@ -14,10 +14,10 @@ const SideBar = () => {
 
 export default SideBar;
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
     backgroundColor: colors.green,
     height: '100%',
     width: 400,
   },
-}));
+});

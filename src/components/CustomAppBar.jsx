@@ -49,7 +49,6 @@ export default CustomAppBar;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flex: 1,
     backgroundColor: colors.green,
   },
   menuButton: {

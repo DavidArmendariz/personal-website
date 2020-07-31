@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import SideBar from './components/SideBar';
 import { Grid, Hidden, makeStyles } from '@material-ui/core';
 import Home from './pages/Home';
@@ -11,13 +11,13 @@ import Resume from './pages/Resume';
 function App() {
   const classes = useStyles();
   return (
-    <Fragment>
+    <Grid id="grid-root" container direction="column">
       <Hidden mdUp>
-        <Grid container>
+        <Grid item className={classes.appBar}>
           <CustomAppBar />
         </Grid>
       </Hidden>
-      <Grid container className={classes.root}>
+      <Grid container item className={classes.root}>
         <Hidden smDown>
           <Grid item>
             <SideBar />
@@ -32,7 +32,7 @@ function App() {
           </Switch>
         </Grid>
       </Grid>
-    </Fragment>
+    </Grid>
   );
 }
 
@@ -41,5 +41,11 @@ export default App;
 const useStyles = makeStyles((theme) => ({
   root: {
     flexWrap: 'nowrap',
+    [theme.breakpoints.up('md')]: {
+      height: '100%',
+    },
+  },
+  appBar: {
+    width: '100vw',
   },
 }));
