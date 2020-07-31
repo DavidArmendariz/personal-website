@@ -6,7 +6,7 @@ import SideBarContent from './SideBarContent';
 const SideBar = () => {
   const classes = useStyles();
   return (
-    <Grid container className={classes.root}>
+    <Grid id="sidebar-container" container className={classes.root}>
       <SideBarContent />
     </Grid>
   );
@@ -17,7 +17,7 @@ export default SideBar;
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: colors.green,
-    height: '100vh',
+    height: '100%',
     width: 400,
   },
 }));

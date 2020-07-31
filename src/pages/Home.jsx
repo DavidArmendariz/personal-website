@@ -76,7 +76,7 @@ const Home = () => {
             technical skill sets and technologies I have used during my career.
           </Box>
         </Grid>
-        <Grid container>
+        <Grid container spacing={4}>
           <SkillsContainer />
         </Grid>
       </Grid>

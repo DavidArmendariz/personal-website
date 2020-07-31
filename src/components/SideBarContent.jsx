@@ -8,7 +8,7 @@ import Links from './Links';
 const SideBarContent = () => {
   const classes = useStyles();
   return (
-    <div className={classes.hideOverflow}>
+    <div id="sidebar-content" className={classes.hideOverflow}>
       <Grid container direction="column" className={classes.root} spacing={4}>
         <Grid item>
           <Typography className={classes.name}>David Armendáriz</Typography>
@@ -38,6 +38,7 @@ export default SideBarContent;
 const useStyles = makeStyles((theme) => ({
   hideOverflow: {
     overflowX: 'hidden',
+    height: '100%',
   },
   root: {
     alignItems: 'center',
