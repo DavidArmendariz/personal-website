@@ -8,8 +8,8 @@ const SkillsContainer = () => {
   const classes = useStyles();
   return (
     <Fragment>
-      {skills.map((skill) => (
-        <Grid lg={4} container item direction="column">
+      {skills.map((skill, index) => (
+        <Grid key={index} lg={4} container item direction="column">
           <Card className={classes.card}>
             <CardContent>
               <Grid item>

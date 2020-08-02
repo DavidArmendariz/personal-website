@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(3),
     paddingRight: theme.spacing(3),
     '&:hover': {
-      backgroundColor: `${colors.green}50`,
+      backgroundColor: colors.greenWithOpacity,
     },
   },
   viewResume: {
@@ -105,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(3),
     paddingRight: theme.spacing(3),
     '&:hover': {
-      backgroundColor: `${colors.gray}50`,
+      backgroundColor: colors.grayWithOpacity,
     },
   },
   link: {

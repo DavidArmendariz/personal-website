@@ -23,7 +23,7 @@ function App() {
             <SideBar />
           </Grid>
         </Hidden>
-        <Grid item>
+        <Grid item className={classes.content}>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/portfolio" component={Portfolio} />
@@ -47,5 +47,8 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     width: '100vw',
+  },
+  content: {
+    width: '100%',
   },
 }));
