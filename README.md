@@ -1,3 +1,3 @@
-# David Armendáriz
+# Personal Website
 
-Test
+This is the Repo of my personal website (not hosted yet)
