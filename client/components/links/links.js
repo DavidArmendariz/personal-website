@@ -1,12 +1,12 @@
-import React from 'react';
-import styles from './links.module.scss';
-import { paths } from '../../constants/paths';
+import { sidebarLinks } from '../../constants/sidebarLinks';
 import Link from 'next/link';
+
+import styles from './links.module.scss';
 
 export default function Links() {
   return (
     <div className={styles.container}>
-      {paths.map(({ path, icon, text }) => {
+      {sidebarLinks.map(({ path, icon, text }) => {
         return (
           <Link key={path} href={path}>
             <div className={styles.link}>

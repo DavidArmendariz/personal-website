@@ -10,7 +10,9 @@ export default function Home() {
         <title>David Armendariz - About me</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Sidebar />
+      <main className={styles.main}>
+        <Sidebar />
+      </main>
     </div>
   );
 }
