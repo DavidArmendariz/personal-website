@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Sidebar from '../components/sidebar/sidebar';
+import AboutMe from '../components/about-me/aboutMe';
 
 import styles from '../styles/index.module.scss';
 
@@ -12,6 +13,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Sidebar />
+        <AboutMe />
       </main>
     </div>
   );
