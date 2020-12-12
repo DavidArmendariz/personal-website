@@ -3,14 +3,13 @@
 .container {
   display: flex;
   flex-direction: column;
-}
-
-.link {
-  display: flex;
-  align-items: center;
-  color: colors.$white;
-  cursor: pointer;
-  div {
-    padding: 8px;
+  .link {
+    display: flex;
+    align-items: center;
+    color: colors.$white;
+    cursor: pointer;
+    div {
+      padding: 8px;
+    }
   }
 }

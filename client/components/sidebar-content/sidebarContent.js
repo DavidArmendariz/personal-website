@@ -1,4 +1,3 @@
-import React from 'react';
 import Links from '../links/links';
 import ImageAvatar from '../avatar/avatar';
 import SocialMedia from '../social-media/socialMedia';
