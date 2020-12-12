@@ -7,19 +7,21 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-20.04
+    defaults:
+      run:
+        working-directory: ./client
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: "15"
-      - run: cd client
       - run: yarn install
       - run: yarn build
       - run: yarn export
       - uses: actions/upload-artifact@v2
         with:
           name: out
-          path: out
+          path: ./client/out
   deploy:
     name: Deploy
     needs: build
