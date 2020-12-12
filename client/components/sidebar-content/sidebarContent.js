@@ -1,0 +1,21 @@
+import React from 'react';
+import Links from '../links/links';
+import ImageAvatar from '../avatar/avatar';
+import SocialMedia from '../social-media/socialMedia';
+
+import styles from './sidebarContent.module.scss';
+
+export default function SidebarContent() {
+  return (
+    <div className={styles.container}>
+      <div className={styles.name}>David Armendariz</div>
+      <ImageAvatar />
+      <div className={styles.aboutMe}>
+        Hi! My name is David Armendáriz. I am an ecuadorian mathematician and
+        software developer. Welcome!
+      </div>
+      <SocialMedia />
+      <Links />
+    </div>
+  );
+}

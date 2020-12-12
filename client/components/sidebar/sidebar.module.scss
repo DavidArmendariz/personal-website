@@ -1,0 +1,8 @@
+@use 'theme/colors' as colors;
+
+.container {
+  display: flex;
+  background-color: colors.$green58;
+  height: 100%;
+  width: 400px;
+}
