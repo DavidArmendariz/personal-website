@@ -31,13 +31,6 @@ export default function Home() {
           </Link>
         </div>
         <br />
-        <div className={styles.whatIDo}>What I do</div>
-        <div className={styles.whatIDoContent}>
-          I have 1.5 years of experience as a mathematician and software
-          developer. My main skill is to learn things extremely fast, no matter
-          what the subject is. Below is a quick overview of my main technical
-          skill sets and technologies I have used during my career.
-        </div>
       </div>
     </div>
   );
