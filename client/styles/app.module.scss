@@ -1,0 +1,24 @@
+$sm-media-screen: 'only screen and (max-width: 768px)';
+
+.container {
+  position: relative;
+  min-height: 100vh;
+  .main {
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    @media #{$sm-media-screen} {
+      flex-direction: column;
+      .sidebar {
+        display: none;
+      }
+    }
+    .appBar {
+      display: none;
+      @media #{$sm-media-screen} {
+        display: flex;
+      }
+    }
+  }
+}
