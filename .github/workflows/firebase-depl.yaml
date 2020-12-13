@@ -20,9 +20,8 @@ jobs:
       - run: yarn export
       - uses: actions/upload-artifact@v2
         with:
-          working-directory: ./client/out
           name: out
-          path: out
+          path: ./client/out
   deploy:
     name: Deploy
     needs: build
@@ -31,12 +30,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
         with:
-          working-directory: ./client/out
           name: out
-          path: out
+          path: ./client/out
       - uses: w9jds/firebase-action@master
         with:
-          working-directory: ./client/out
           args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{secrets.FIREBASE_TOKEN}}
