@@ -1,1 +1,1 @@
-export const photo = '/photo.jpeg';
+export const photo = '/photo.jpg';
