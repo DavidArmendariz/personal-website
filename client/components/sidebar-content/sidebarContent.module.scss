@@ -3,18 +3,13 @@
 .container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: 100%;
-  margin: 16px;
-  .name {
-    color: colors.$white;
-    font-weight: 'bold';
-    font-size: 20px;
-    margin-bottom: 36px;
-  }
-  .aboutMe {
-    color: colors.$white;
-    text-align: center;
-    margin: 36px 0;
-  }
+}
+
+.aboutMe {
+  color: colors.$white;
+  text-align: center;
+  margin: 36px 0;
 }
