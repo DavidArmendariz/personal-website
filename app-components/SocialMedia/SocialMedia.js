@@ -1,7 +1,7 @@
 import React from 'react';
+import { socialMediaLinks } from 'app-constants/sidebar-links';
 import Link from 'next/link';
-import { socialMediaLinks } from '../../constants/sidebarLinks';
-import styles from './socialMedia.module.scss';
+import styles from './SocialMedia.module.scss';
 
 const iconSize = 32;
 

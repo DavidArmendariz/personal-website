@@ -1,7 +1,7 @@
-import AppBar from 'app-components/app-bar/appBar';
-import Sidebar from 'app-components/sidebar/sidebar';
-import styles from '../styles/app.module.scss';
-import '../styles/globals.scss';
+import AppBar from 'app-components/AppBar';
+import Sidebar from 'app-components/Sidebar';
+import styles from 'app-styles/app.module.scss';
+import 'app-styles/globals.scss';
 
 export default function MyApp({ Component, pageProps }) {
   return (

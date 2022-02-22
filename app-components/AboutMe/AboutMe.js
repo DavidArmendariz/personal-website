@@ -1,8 +1,8 @@
 import { MdDescription, MdWork } from 'react-icons/md';
 import Link from 'next/link';
-import styles from './aboutMe.module.scss';
+import styles from './AboutMe.module.scss';
 
-export default function Home() {
+export default function AboutMe() {
   return (
     <div className={styles.container}>
       <div>

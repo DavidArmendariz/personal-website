@@ -1,4 +1,4 @@
-import styles from '../styles/error.module.scss';
+import styles from 'app-styles/error.module.scss';
 
 export default function Custom404() {
   return (
