@@ -1,6 +1,6 @@
+import { sidebarLinks } from 'app-constants/sidebar-links';
 import Link from 'next/link';
-import { sidebarLinks } from '../../constants/sidebarLinks';
-import styles from './appBar.module.scss';
+import styles from './AppBar.module.scss';
 
 export default function AppBar() {
   return (

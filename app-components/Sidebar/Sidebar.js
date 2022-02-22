@@ -1,5 +1,5 @@
-import SidebarContent from '../sidebar-content/sidebarContent';
-import styles from './sidebar.module.scss';
+import SidebarContent from 'app-components/SidebarContent';
+import styles from './Sidebar.module.scss';
 
 export default function Sidebar() {
   return (

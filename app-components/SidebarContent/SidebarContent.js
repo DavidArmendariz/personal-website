@@ -1,7 +1,7 @@
-import ImageAvatar from '../avatar/avatar';
-import Links from '../links/links';
-import SocialMedia from '../social-media/socialMedia';
-import styles from './sidebarContent.module.scss';
+import ImageAvatar from 'app-components/Avatar';
+import Links from 'app-components/Links';
+import SocialMedia from 'app-components/SocialMedia';
+import styles from './SidebarContent.module.scss';
 
 export default function SidebarContent() {
   return (
