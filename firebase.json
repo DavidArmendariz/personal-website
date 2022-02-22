@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "client/out",
+    "public": "out",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   }
 }
