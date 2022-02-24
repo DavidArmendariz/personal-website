@@ -1,10 +1,9 @@
 import Head from 'next/head';
 
-export default function PageHead({ title, favicon = '/favicon.ico' }) {
+export default function PageHead({ title }) {
   return (
     <Head>
       <title>{title}</title>
-      <link rel="icon" href={favicon} />
     </Head>
   );
 }
