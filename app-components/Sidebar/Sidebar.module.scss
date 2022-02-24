@@ -1,8 +1,0 @@
-@use 'app-theme/colors' as colors;
-
-.container {
-  background-color: colors.$green58;
-  width: 400px;
-  height: 100%;
-  box-shadow: 4px 0 8px 0 rgba(colors.$black, 0.3);
-}

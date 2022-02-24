@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseButton from 'react-bootstrap/Button';
+import BaseButton from '@mui/material/Button';
 
 const Button = ({ children, variant = 'primary' }) => {
   return <BaseButton variant={variant}>{children}</BaseButton>;

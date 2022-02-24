@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import styled from 'styled-components';
+import { styled } from '@mui/system';
 import Button from 'app-components/Button';
 import PageHead from 'app-components/PageHead';
 
 export default function Home() {
   return (
     <div>
-      <PageHead title={t('About me')} />
+      <PageHead title={'About me'} />
       <Container>
         <h1>David Armendáriz</h1>
         <h2>Mathematician and Software Developer</h2>
@@ -30,6 +30,6 @@ export default function Home() {
   );
 }
 
-const Container = styled.div`
+const Container = styled('div')`
   padding: 3rem;
 `;
