@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import { styled } from '@mui/system';
 import Layout from 'app-components/Layout';
+import Theme from 'app-contexts/Theme';
 import 'app-styles/globals.scss';
 
 export default function MyApp({ Component, pageProps }) {
@@ -9,9 +9,11 @@ export default function MyApp({ Component, pageProps }) {
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Theme>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Theme>
     </>
   );
 }

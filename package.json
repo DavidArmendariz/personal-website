@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
+    "lint": "next lint",
     "firebase:login": "firebase login",
     "firebase:logout": "firebase logout",
     "firebase:generate-auth-token": "firebase login:ci",
@@ -25,6 +26,8 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^3.2.0",
+    "eslint": "8.10.0",
+    "eslint-config-next": "12.1.0",
     "firebase-tools": "^10.2.1",
     "prettier": "^2.5.1"
   }

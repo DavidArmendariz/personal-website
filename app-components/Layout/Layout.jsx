@@ -12,22 +12,9 @@ import Toolbar from '@mui/material/Toolbar';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { styled } from '@mui/system';
+import DarkMode from './DarkMode';
 
 const DRAWER_WIDTH = 240;
-
-const drawer = (
-  <>
-    <Toolbar />
-    <Divider />
-    <List>
-      {['About me', 'Portfolio', 'Resume'].map((text) => (
-        <ListItem button key={text}>
-          <ListItemText primary={text} />
-        </ListItem>
-      ))}
-    </List>
-  </>
-);
 
 export default function Layout({ children }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -38,8 +25,21 @@ export default function Layout({ children }) {
     setMobileOpen(!mobileOpen);
   };
 
+  const renderDrawer = () => (
+    <>
+      <Divider />
+      <List>
+        {['About me', 'Portfolio', 'Resume'].map((text) => (
+          <ListItem button key={text}>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+    </>
+  );
+
   return (
-    <Container>
+    <Root>
       <AppBar
         position="fixed"
         sx={{
@@ -47,7 +47,7 @@ export default function Layout({ children }) {
           ml: { sm: `${DRAWER_WIDTH}px` },
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{ display: { sm: 'none' } }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -73,11 +73,11 @@ export default function Layout({ children }) {
               keepMounted: true,
             }}
           >
-            {drawer}
+            {renderDrawer()}
           </StyledDrawer>
         ) : (
           <StyledDrawer variant="permanent" open>
-            {drawer}
+            {renderDrawer()}
           </StyledDrawer>
         )}
       </Box>
@@ -87,21 +87,24 @@ export default function Layout({ children }) {
           width: { sm: `calc(100% - ${DRAWER_WIDTH}px)` },
         }}
       >
+        <Toolbar>
+          <DarkMode />
+        </Toolbar>
         {children}
       </MainComponent>
-    </Container>
+    </Root>
   );
 }
+
+const Root = styled(Box)`
+  display: flex;
+`;
 
 const StyledDrawer = styled(Drawer)`
   .MuiDrawer-paper {
     box-sizing: border-box;
     width: ${DRAWER_WIDTH}px;
   }
-`;
-
-const Container = styled(Box)`
-  display: flex;
 `;
 
 const MainComponent = styled(Box)`
