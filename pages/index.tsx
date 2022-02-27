@@ -5,7 +5,7 @@ import { Button, PageHead } from 'app-components';
 const Home = () => {
   return (
     <>
-      <PageHead title={'About me'} />
+      <PageHead title={'David Armendáriz | About me'} />
       <Typography variant="h1">David Armendáriz</Typography>
       <Typography variant="h2">Software Developer / Mathematician</Typography>
       <Typography paragraph>

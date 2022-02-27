@@ -1,6 +1,11 @@
 import { createContext, useMemo, useState } from 'react';
 import { PaletteMode } from '@mui/material';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import {
+  ThemeProvider as BaseThemeProvider,
+  createTheme,
+  responsiveFontSizes,
+} from '@mui/material/styles';
 
 export const ThemeContext = createContext<{
   toggleColorMode: () => void;
@@ -10,7 +15,7 @@ export const ThemeContext = createContext<{
   mode: 'light',
 });
 
-const Theme = ({ children }) => {
+export const ThemeProvider = ({ children }) => {
   const [mode, setMode] = useState<PaletteMode>('light');
   const themeContextValue = useMemo(
     () => ({
@@ -24,19 +29,22 @@ const Theme = ({ children }) => {
 
   const theme = useMemo(
     () =>
-      createTheme({
-        palette: {
-          mode,
-        },
-      }),
+      responsiveFontSizes(
+        createTheme({
+          palette: {
+            mode,
+          },
+        })
+      ),
     [mode]
   );
 
   return (
     <ThemeContext.Provider value={themeContextValue}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <BaseThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </BaseThemeProvider>
     </ThemeContext.Provider>
   );
 };
-
-export default Theme;

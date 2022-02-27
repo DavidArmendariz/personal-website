@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-const PageHead = ({ title }) => {
+const PageHead: React.FC<{ title: string }> = ({ title }) => {
   return (
     <Head>
       <title>{title}</title>
