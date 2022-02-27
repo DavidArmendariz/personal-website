@@ -34,6 +34,7 @@ export const ThemeProvider: React.FC = ({ children }) => {
         ? 'dark'
         : 'light';
     }
+    console.log(`Setting theme color mode to "${initialColorMode}"...`);
     setIsMounted(true);
     setColorMode(initialColorMode);
   }, []);
