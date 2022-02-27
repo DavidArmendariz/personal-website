@@ -15,13 +15,16 @@ export const ThemeContext = createContext<{
   colorMode: 'light',
 });
 
+const COLOR_MODE_KEY = 'color-mode';
+
 export const ThemeProvider: React.FC = ({ children }) => {
   const [colorMode, setColorMode] = useState<PaletteMode>('light');
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     let initialColorMode: PaletteMode;
-    const persistedColorPreference = window.localStorage.getItem('color-mode');
+    const persistedColorPreference =
+      window.localStorage.getItem(COLOR_MODE_KEY);
     const hasPersistedColorPreference =
       persistedColorPreference &&
       (persistedColorPreference === 'dark' ||
@@ -44,7 +47,7 @@ export const ThemeProvider: React.FC = ({ children }) => {
       toggleColorMode: () => {
         setColorMode((prevMode) => {
           const newColorMode = prevMode === 'light' ? 'dark' : 'light';
-          window.localStorage.setItem('color-mode', newColorMode);
+          window.localStorage.setItem(COLOR_MODE_KEY, newColorMode);
           return newColorMode;
         });
       },
