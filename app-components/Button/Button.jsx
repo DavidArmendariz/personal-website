@@ -1,4 +1,3 @@
-import React from 'react';
 import BaseButton from '@mui/material/Button';
 
 const Button = ({ children, variant = 'primary' }) => {

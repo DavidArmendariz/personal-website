@@ -16,7 +16,7 @@ import DarkMode from './DarkMode';
 
 const DRAWER_WIDTH = 240;
 
-export default function Layout({ children }) {
+const Layout = ({ children }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const smallScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -94,7 +94,9 @@ export default function Layout({ children }) {
       </MainComponent>
     </Root>
   );
-}
+};
+
+export default Layout;
 
 const Root = styled(Box)`
   display: flex;

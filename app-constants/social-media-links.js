@@ -6,7 +6,7 @@ import {
 } from 'react-icons/ai';
 import { MdDescription, MdPerson, MdWork } from 'react-icons/md';
 
-export const sidebarLinks = [
+export const SOCIAL_MEDIA_LINKS = [
   { path: '/', text: 'About me', icon: <MdPerson /> },
   {
     path: '/portfolio',
@@ -22,7 +22,7 @@ export const sidebarLinks = [
 
 export const socialMediaLinks = [
   {
-    url: 'https://twitter.com/DavidAP1998',
+    url: 'https://twitter.com/davidaap_',
     icon: <AiOutlineTwitter />,
   },
   {
