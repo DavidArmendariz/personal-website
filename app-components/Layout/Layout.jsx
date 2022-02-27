@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Link from 'next/link';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -6,7 +7,7 @@ import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 import { useTheme } from '@mui/material/styles';
@@ -15,11 +16,16 @@ import { styled } from '@mui/system';
 import DarkMode from './DarkMode';
 
 const DRAWER_WIDTH = 240;
+const NavLinks = [
+  { id: 'about-me', name: 'About me', path: '/' },
+  { id: 'portfolio', name: 'Portfolio', path: '/portfolio' },
+  { id: 'resume', name: 'Resume', path: '/resume' },
+];
 
 const Layout = ({ children }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
-  const smallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const smallScreen = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -29,10 +35,12 @@ const Layout = ({ children }) => {
     <>
       <Divider />
       <List>
-        {['About me', 'Portfolio', 'Resume'].map((text) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
-          </ListItem>
+        {NavLinks.map(({ id, name, path }) => (
+          <Link key={id} href={path} passHref>
+            <ListItemButton component="a">
+              <ListItemText primary={name} />
+            </ListItemButton>
+          </Link>
         ))}
       </List>
     </>
@@ -43,25 +51,26 @@ const Layout = ({ children }) => {
       <AppBar
         position="fixed"
         sx={{
-          width: { sm: `calc(100% - ${DRAWER_WIDTH}px)` },
-          ml: { sm: `${DRAWER_WIDTH}px` },
+          width: { md: `calc(100% - ${DRAWER_WIDTH}px)` },
+          ml: { md: `${DRAWER_WIDTH}px` },
         }}
       >
-        <Toolbar sx={{ display: { sm: 'none' } }}>
+        <Toolbar sx={{ display: { md: 'none' } }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ mr: 2 }}
           >
             <MenuIcon />
           </IconButton>
+          <DarkMode />
         </Toolbar>
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { sm: DRAWER_WIDTH }, flexShrink: { sm: 0 } }}
+        sx={{ width: { md: DRAWER_WIDTH }, flexShrink: { md: 0 } }}
         aria-label="sidebar"
       >
         {smallScreen ? (
@@ -84,12 +93,10 @@ const Layout = ({ children }) => {
       <MainComponent
         component="main"
         sx={{
-          width: { sm: `calc(100% - ${DRAWER_WIDTH}px)` },
+          width: { md: `calc(100% - ${DRAWER_WIDTH}px)` },
         }}
       >
-        <Toolbar>
-          <DarkMode />
-        </Toolbar>
+        <Toolbar>{!smallScreen && <DarkMode />}</Toolbar>
         {children}
       </MainComponent>
     </Root>
