@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import { createContext, useEffect, useMemo, useState } from 'react';
 import { PaletteMode } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import {
@@ -17,7 +11,7 @@ import { useLocalStorage } from 'app-hooks';
 
 export const ThemeContext = createContext<{
   toggleColorMode: () => void;
-  colorMode?: PaletteMode;
+  colorMode: PaletteMode;
 }>({
   toggleColorMode: () => {},
   colorMode: 'light',
@@ -25,37 +19,36 @@ export const ThemeContext = createContext<{
 
 export const ThemeProvider: React.FC = ({ children }) => {
   const settingsDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const [colorMode, setColorMode, getColorMode] = useLocalStorage<
-    PaletteMode | undefined
-  >('color-mode', undefined);
+  const [colorMode, setColorMode] = useLocalStorage<PaletteMode | null>(
+    'color-mode',
+    null
+  );
   const [isMounted, setIsMounted] = useState(false);
 
-  const getInitialColorMode = useCallback((): {
-    initialColorMode: PaletteMode;
-    setToLocalStorage?: boolean;
-  } => {
-    const persistedColorPreference = getColorMode();
-    if (persistedColorPreference) {
-      return { initialColorMode: persistedColorPreference };
-    }
-    return {
-      initialColorMode: settingsDarkMode ? 'dark' : 'light',
-      setToLocalStorage: false,
-    };
-  }, [settingsDarkMode, getColorMode]);
-
   useEffect(() => {
-    const { initialColorMode, setToLocalStorage } = getInitialColorMode();
-    setColorMode(initialColorMode, setToLocalStorage);
+    let initialColorMode: PaletteMode;
+    const colorModeFromLocalStorage = window.localStorage.getItem('color-mode');
+    const persistedColorPreference =
+      colorModeFromLocalStorage && JSON.parse(colorModeFromLocalStorage);
+    const hasPersistedColorPreference =
+      persistedColorPreference &&
+      (persistedColorPreference === 'dark' ||
+        persistedColorPreference === 'light');
+    if (hasPersistedColorPreference) {
+      initialColorMode = persistedColorPreference;
+    } else {
+      initialColorMode = settingsDarkMode ? 'dark' : 'light';
+    }
+    setColorMode(initialColorMode, false);
     setIsMounted(true);
-  }, [setColorMode, getInitialColorMode]);
+  }, [settingsDarkMode, setColorMode]);
 
   const themeContextValue = useMemo(
     () => ({
       toggleColorMode: () => {
         setColorMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
       },
-      colorMode,
+      colorMode: colorMode || 'light',
     }),
     [colorMode, setColorMode]
   );
@@ -65,7 +58,7 @@ export const ThemeProvider: React.FC = ({ children }) => {
       responsiveFontSizes(
         createTheme({
           palette: {
-            mode: colorMode,
+            ...(colorMode && { mode: colorMode }),
           },
         })
       ),
