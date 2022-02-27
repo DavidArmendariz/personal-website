@@ -1,9 +1,11 @@
 import Head from 'next/head';
 
-export default function PageHead({ title }) {
+const PageHead = ({ title }) => {
   return (
     <Head>
       <title>{title}</title>
     </Head>
   );
-}
+};
+
+export default PageHead;
