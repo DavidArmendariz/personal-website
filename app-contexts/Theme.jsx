@@ -1,6 +1,5 @@
-import { createContext, useMemo } from 'react';
+import { createContext, useMemo, useState } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import useLocalStorage from 'app-hooks/local-storage';
 
 export const ThemeContext = createContext({
   toggleColorMode: () => {},
@@ -8,22 +7,26 @@ export const ThemeContext = createContext({
 });
 
 const Theme = ({ children }) => {
-  const [mode, setMode] = useLocalStorage('mode', 'light');
+  const [mode, setMode] = useState('light');
   const themeContextValue = useMemo(
     () => ({
       toggleColorMode: () => {
         setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
       },
-      mode: mode,
+      mode,
     }),
     [mode, setMode]
   );
 
-  const theme = createTheme({
-    palette: {
-      mode,
-    },
-  });
+  const theme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode,
+        },
+      }),
+    [mode]
+  );
 
   return (
     <ThemeContext.Provider value={themeContextValue}>
