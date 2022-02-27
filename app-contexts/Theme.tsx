@@ -6,8 +6,6 @@ import {
   createTheme,
   responsiveFontSizes,
 } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useLocalStorage } from 'app-hooks';
 
 export const ThemeContext = createContext<{
   toggleColorMode: () => void;
@@ -18,18 +16,12 @@ export const ThemeContext = createContext<{
 });
 
 export const ThemeProvider: React.FC = ({ children }) => {
-  const settingsDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const [colorMode, setColorMode] = useLocalStorage<PaletteMode | null>(
-    'color-mode',
-    null
-  );
+  const [colorMode, setColorMode] = useState<PaletteMode>('light');
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     let initialColorMode: PaletteMode;
-    const colorModeFromLocalStorage = window.localStorage.getItem('color-mode');
-    const persistedColorPreference =
-      colorModeFromLocalStorage && JSON.parse(colorModeFromLocalStorage);
+    const persistedColorPreference = window.localStorage.getItem('color-mode');
     const hasPersistedColorPreference =
       persistedColorPreference &&
       (persistedColorPreference === 'dark' ||
@@ -37,16 +29,23 @@ export const ThemeProvider: React.FC = ({ children }) => {
     if (hasPersistedColorPreference) {
       initialColorMode = persistedColorPreference;
     } else {
-      initialColorMode = settingsDarkMode ? 'dark' : 'light';
+      initialColorMode = window.matchMedia('(prefers-color-scheme: dark)')
+        .matches
+        ? 'dark'
+        : 'light';
     }
-    setColorMode(initialColorMode, false);
     setIsMounted(true);
-  }, [settingsDarkMode, setColorMode]);
+    setColorMode(initialColorMode);
+  }, []);
 
   const themeContextValue = useMemo(
     () => ({
       toggleColorMode: () => {
-        setColorMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+        setColorMode((prevMode) => {
+          const newColorMode = prevMode === 'light' ? 'dark' : 'light';
+          window.localStorage.setItem('color-mode', newColorMode);
+          return newColorMode;
+        });
       },
       colorMode: colorMode || 'light',
     }),
@@ -65,7 +64,7 @@ export const ThemeProvider: React.FC = ({ children }) => {
     [colorMode]
   );
 
-  if (!isMounted || !colorMode) {
+  if (!isMounted) {
     return null;
   }
 
