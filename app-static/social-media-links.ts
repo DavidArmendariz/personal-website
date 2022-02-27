@@ -1,26 +1,27 @@
-import {
-  AiFillGithub,
-  AiFillLinkedin,
-  AiFillYoutube,
-  AiOutlineTwitter,
-} from 'react-icons/ai';
-import { IconType } from 'react-icons/lib';
+import { SvgIconComponent } from '@mui/icons-material';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
-export const SOCIAL_MEDIA_LINKS: Array<{ url: string; icon: IconType }> = [
+export const SOCIAL_MEDIA_LINKS: Array<{
+  url: string;
+  Icon: SvgIconComponent;
+}> = [
   {
     url: 'https://twitter.com/davidaap_',
-    icon: AiOutlineTwitter,
+    Icon: TwitterIcon,
   },
   {
     url: 'https://www.linkedin.com/in/david-adrian-armendariz/',
-    icon: AiFillLinkedin,
+    Icon: LinkedInIcon,
   },
   {
     url: 'https://github.com/DavidArmendariz',
-    icon: AiFillGithub,
+    Icon: GitHubIcon,
   },
   {
     url: 'https://www.youtube.com/channel/UC4jmaY21ri9n3DteRwuoJaA',
-    icon: AiFillYoutube,
+    Icon: YouTubeIcon,
   },
 ];
