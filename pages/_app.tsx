@@ -1,10 +1,11 @@
+import { AppProps } from 'next/app';
 import Head from 'next/head';
 import CssBaseline from '@mui/material/CssBaseline';
 import Layout from 'app-components/Layout';
 import Theme from 'app-contexts/Theme';
 import 'app-styles/globals.css';
 
-export default function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
@@ -18,4 +19,6 @@ export default function MyApp({ Component, pageProps }) {
       </Theme>
     </>
   );
-}
+};
+
+export default MyApp;
