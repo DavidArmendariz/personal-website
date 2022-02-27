@@ -1,6 +1,9 @@
 import { useState } from 'react';
 
-type SetValueToLocalStorage<T> = (value: T | ((previousValue: T) => T)) => void;
+type SetValueToLocalStorage<T> = (
+  value: T | ((previousValue: T) => T),
+  setToLocalStorage?: boolean
+) => void;
 type GetValueFromLocalStorage<T> = () => T;
 type RemoveValueFromLocalStorage = () => void;
 
@@ -28,12 +31,15 @@ export function useLocalStorage<T>(
 
   const [storedValue, setStoredValue] = useState<T>(() => getValue());
 
-  const setValue: SetValueToLocalStorage<T> = (value) => {
+  const setValue: SetValueToLocalStorage<T> = (
+    value,
+    setToLocalStorage = true
+  ) => {
     try {
       const valueToStore =
         value instanceof Function ? value(storedValue) : value;
       setStoredValue(valueToStore);
-      if (typeof window !== 'undefined') {
+      if (typeof window !== 'undefined' && setToLocalStorage) {
         window.localStorage.setItem(key, JSON.stringify(valueToStore));
       }
     } catch (error) {

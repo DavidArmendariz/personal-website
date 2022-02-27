@@ -30,16 +30,23 @@ export const ThemeProvider: React.FC = ({ children }) => {
   >('color-mode', undefined);
   const [isMounted, setIsMounted] = useState(false);
 
-  const getInitialColorMode = useCallback(() => {
+  const getInitialColorMode = useCallback((): {
+    initialColorMode: PaletteMode;
+    setToLocalStorage?: boolean;
+  } => {
     const persistedColorPreference = getColorMode();
     if (persistedColorPreference) {
-      return persistedColorPreference;
+      return { initialColorMode: persistedColorPreference };
     }
-    return settingsDarkMode ? 'dark' : 'light';
+    return {
+      initialColorMode: settingsDarkMode ? 'dark' : 'light',
+      setToLocalStorage: false,
+    };
   }, [settingsDarkMode, getColorMode]);
 
   useEffect(() => {
-    setColorMode(getInitialColorMode());
+    const { initialColorMode, setToLocalStorage } = getInitialColorMode();
+    setColorMode(initialColorMode, setToLocalStorage);
     setIsMounted(true);
   }, [setColorMode, getInitialColorMode]);
 
