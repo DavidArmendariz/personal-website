@@ -6,6 +6,7 @@ import {
   createTheme,
   responsiveFontSizes,
 } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export const ThemeContext = createContext<{
   toggleColorMode: () => void;
@@ -20,6 +21,9 @@ const COLOR_MODE_KEY = 'color-mode';
 export const ThemeProvider: React.FC = ({ children }) => {
   const [colorMode, setColorMode] = useState<PaletteMode>('light');
   const [isMounted, setIsMounted] = useState(false);
+  const isDarkModeEnabled = useMediaQuery('(prefers-color-scheme: dark)', {
+    noSsr: true,
+  });
 
   useEffect(() => {
     let initialColorMode: PaletteMode;
@@ -32,15 +36,12 @@ export const ThemeProvider: React.FC = ({ children }) => {
     if (hasPersistedColorPreference) {
       initialColorMode = persistedColorPreference;
     } else {
-      initialColorMode = window.matchMedia('(prefers-color-scheme: dark)')
-        .matches
-        ? 'dark'
-        : 'light';
+      initialColorMode = isDarkModeEnabled ? 'dark' : 'light';
     }
     console.log(`Setting theme color mode to "${initialColorMode}"...`);
     setIsMounted(true);
     setColorMode(initialColorMode);
-  }, []);
+  }, [isDarkModeEnabled]);
 
   const themeContextValue = useMemo(
     () => ({
@@ -51,7 +52,7 @@ export const ThemeProvider: React.FC = ({ children }) => {
           return newColorMode;
         });
       },
-      colorMode: colorMode || 'light',
+      colorMode,
     }),
     [colorMode, setColorMode]
   );
@@ -61,7 +62,7 @@ export const ThemeProvider: React.FC = ({ children }) => {
       responsiveFontSizes(
         createTheme({
           palette: {
-            ...(colorMode && { mode: colorMode }),
+            mode: colorMode,
           },
         })
       ),
