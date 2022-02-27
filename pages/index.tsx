@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import Typography from '@mui/material/Typography';
-import Button from 'app-components/Button';
-import PageHead from 'app-components/PageHead';
+import { Button, PageHead } from 'app-components';
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <PageHead title={'About me'} />
@@ -26,4 +25,6 @@ export default function Home() {
       </Link>
     </>
   );
-}
+};
+
+export default Home;
