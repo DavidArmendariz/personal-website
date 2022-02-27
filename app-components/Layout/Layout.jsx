@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import ResumeIcon from '@mui/icons-material/ContactPage';
 import MenuIcon from '@mui/icons-material/Menu';
+import AboutMeIcon from '@mui/icons-material/Person';
+import PortfolioIcon from '@mui/icons-material/Work';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
@@ -8,6 +11,7 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 import { useTheme } from '@mui/material/styles';
@@ -17,9 +21,14 @@ import DarkMode from './DarkMode';
 
 const DRAWER_WIDTH = 240;
 const NavLinks = [
-  { id: 'about-me', name: 'About me', path: '/' },
-  { id: 'portfolio', name: 'Portfolio', path: '/portfolio' },
-  { id: 'resume', name: 'Resume', path: '/resume' },
+  { id: 'about-me', name: 'About me', path: '/', Icon: AboutMeIcon },
+  {
+    id: 'portfolio',
+    name: 'Portfolio',
+    path: '/portfolio',
+    Icon: PortfolioIcon,
+  },
+  { id: 'resume', name: 'Resume', path: '/resume', Icon: ResumeIcon },
 ];
 
 const Layout = ({ children }) => {
@@ -35,9 +44,12 @@ const Layout = ({ children }) => {
     <>
       <Divider />
       <List>
-        {NavLinks.map(({ id, name, path }) => (
+        {NavLinks.map(({ id, name, path, Icon }) => (
           <Link key={id} href={path} passHref>
             <ListItemButton component="a">
+              <ListItemIcon>
+                <Icon />
+              </ListItemIcon>
               <ListItemText primary={name} />
             </ListItemButton>
           </Link>

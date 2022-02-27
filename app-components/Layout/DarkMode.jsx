@@ -1,8 +1,6 @@
 import { useContext } from 'react';
-import {
-  MdBrightness5 as TurnOffDarkModeIcon,
-  MdBrightness4 as TurnOnDarkModeIcon,
-} from 'react-icons/md';
+import TurnOnDarkModeIcon from '@mui/icons-material/Brightness4';
+import TurnOffDarkModeIcon from '@mui/icons-material/Brightness5';
 import IconButton from '@mui/material/IconButton';
 import { ThemeContext } from 'app-contexts/Theme';
 
