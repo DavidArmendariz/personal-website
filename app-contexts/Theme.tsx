@@ -1,4 +1,10 @@
-import { createContext, useMemo, useState } from 'react';
+import {
+  createContext,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { PaletteMode } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import {
@@ -6,25 +12,45 @@ import {
   createTheme,
   responsiveFontSizes,
 } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useLocalStorage } from 'app-hooks';
 
 export const ThemeContext = createContext<{
   toggleColorMode: () => void;
-  mode: PaletteMode;
+  colorMode?: PaletteMode;
 }>({
   toggleColorMode: () => {},
-  mode: 'light',
+  colorMode: 'light',
 });
 
-export const ThemeProvider = ({ children }) => {
-  const [mode, setMode] = useState<PaletteMode>('light');
+export const ThemeProvider: React.FC = ({ children }) => {
+  const settingsDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const [colorMode, setColorMode, getColorMode] = useLocalStorage<
+    PaletteMode | undefined
+  >('color-mode', undefined);
+  const [isMounted, setIsMounted] = useState(false);
+
+  const getInitialColorMode = useCallback(() => {
+    const persistedColorPreference = getColorMode();
+    if (persistedColorPreference) {
+      return persistedColorPreference;
+    }
+    return settingsDarkMode ? 'dark' : 'light';
+  }, [settingsDarkMode, getColorMode]);
+
+  useEffect(() => {
+    setColorMode(getInitialColorMode());
+    setIsMounted(true);
+  }, [setColorMode, getInitialColorMode]);
+
   const themeContextValue = useMemo(
     () => ({
       toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+        setColorMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
       },
-      mode,
+      colorMode,
     }),
-    [mode, setMode]
+    [colorMode, setColorMode]
   );
 
   const theme = useMemo(
@@ -32,12 +58,16 @@ export const ThemeProvider = ({ children }) => {
       responsiveFontSizes(
         createTheme({
           palette: {
-            mode,
+            mode: colorMode,
           },
         })
       ),
-    [mode]
+    [colorMode]
   );
+
+  if (!isMounted || !colorMode) {
+    return null;
+  }
 
   return (
     <ThemeContext.Provider value={themeContextValue}>

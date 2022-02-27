@@ -13,7 +13,7 @@ const DarkMode = () => {
       onClick={themeContext.toggleColorMode}
       color="inherit"
     >
-      {themeContext.mode === 'dark' ? (
+      {themeContext.colorMode === 'dark' ? (
         <TurnOffDarkModeIcon />
       ) : (
         <TurnOnDarkModeIcon />
