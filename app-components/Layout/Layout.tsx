@@ -6,7 +6,6 @@ import AboutMeIcon from '@mui/icons-material/Person';
 import PortfolioIcon from '@mui/icons-material/Work';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
@@ -31,7 +30,7 @@ const NavLinks = [
   { id: 'resume', name: 'Resume', path: '/resume', Icon: ResumeIcon },
 ];
 
-const Layout = ({ children }) => {
+const Layout: React.FC = ({ children }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const smallScreen = useMediaQuery(theme.breakpoints.down('md'));
@@ -41,8 +40,7 @@ const Layout = ({ children }) => {
   };
 
   const renderDrawer = () => (
-    <>
-      <Divider />
+    <Box role="presentation" onClick={handleDrawerToggle}>
       <List>
         {NavLinks.map(({ id, name, path, Icon }) => (
           <Link key={id} href={path} passHref>
@@ -55,7 +53,7 @@ const Layout = ({ children }) => {
           </Link>
         ))}
       </List>
-    </>
+    </Box>
   );
 
   return (
