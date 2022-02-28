@@ -6,9 +6,11 @@ import AboutMeIcon from '@mui/icons-material/Person';
 import PortfolioIcon from '@mui/icons-material/Work';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -16,6 +18,7 @@ import Toolbar from '@mui/material/Toolbar';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { styled } from '@mui/system';
+import SocialMedia from 'app-components/SocialMedia';
 import DarkMode from './DarkMode';
 
 const DRAWER_WIDTH = 240;
@@ -42,6 +45,10 @@ const Layout: React.FC = ({ children }) => {
   const renderDrawer = () => (
     <Box role="presentation" onClick={handleDrawerToggle}>
       <List>
+        <SocialMediaListItem>
+          <SocialMedia />
+        </SocialMediaListItem>
+        <Divider />
         {NavLinks.map(({ id, name, path, Icon }) => (
           <Link key={id} href={path} passHref>
             <ListItemButton component="a">
@@ -124,6 +131,11 @@ const StyledDrawer = styled(Drawer)`
     box-sizing: border-box;
     width: ${DRAWER_WIDTH}px;
   }
+`;
+
+const SocialMediaListItem = styled(ListItem)`
+  justify-content: center;
+  flex-wrap: wrap;
 `;
 
 const MainComponent = styled(Box)`
