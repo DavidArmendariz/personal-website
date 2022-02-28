@@ -8,7 +8,7 @@
     "start": "next start",
     "export": "next export",
     "lint": "next lint",
-    "check-types": "tsc --noEmit",
+    "check-types": "tsc",
     "firebase:login": "firebase login",
     "firebase:logout": "firebase logout",
     "firebase:generate-auth-token": "firebase login:ci",
