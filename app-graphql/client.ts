@@ -22,8 +22,32 @@ const authLink = (preview = false) =>
     };
   });
 
-export const gqlClient = (preview = false) =>
+const gqlClient = (preview = false) =>
   new ApolloClient({
     link: authLink(preview).concat(httpLink),
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({ addTypename: false }),
   });
+
+export async function executeQuery<RawResponse, TransformedResponse>({
+  query,
+  preview = false,
+  transformer = (response) => response,
+  variables = {},
+}: {
+  query: any;
+  preview?: boolean;
+  transformer?: (response: RawResponse) => TransformedResponse | RawResponse;
+  variables?: Record<string, any>;
+}) {
+  const { data } = await gqlClient(preview).query<RawResponse>({
+    query,
+    variables: {
+      ...variables,
+      preview,
+    },
+  });
+
+  const transformedData = transformer(data);
+
+  return { data: transformedData };
+}
