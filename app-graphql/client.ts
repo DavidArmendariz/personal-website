@@ -39,15 +39,17 @@ export async function executeQuery<RawResponse, TransformedResponse>({
   transformer?: (response: RawResponse) => TransformedResponse | RawResponse;
   variables?: Record<string, any>;
 }) {
-  const { data } = await gqlClient(preview).query<RawResponse>({
-    query,
-    variables: {
-      ...variables,
-      preview,
-    },
-  });
-
-  const transformedData = transformer(data);
-
-  return { data: transformedData };
+  try {
+    const { data, error = null } = await gqlClient(preview).query<RawResponse>({
+      query,
+      variables: {
+        ...variables,
+        preview,
+      },
+    });
+    const transformedData = transformer(data);
+    return { data: transformedData, error };
+  } catch (error: any) {
+    return { data: null, error: error.message };
+  }
 }

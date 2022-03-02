@@ -6,14 +6,15 @@ import {
   GetPortfolioTransformedResponse,
 } from './types';
 
-export const getPortfolioItems = async () => {
-  const { data } = await executeQuery<
+export const getPortfolioItems = async (preview = false) => {
+  const { data, error } = await executeQuery<
     GetPortfolioItemsResponse,
     GetPortfolioTransformedResponse
   >({
     query: GetPortfolioItemsQuery,
     transformer: getPortfolioItemsTransformers,
+    preview,
   });
 
-  return { data };
+  return { data, error };
 };
