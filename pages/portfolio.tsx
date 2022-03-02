@@ -17,7 +17,11 @@ const Portfolio: NextPage<{
   return (
     <>
       <PageHead title={'David Armendáriz | Portfolio'} />
-      <Grid container columnSpacing={2}>
+      <Grid
+        container
+        columnSpacing={2}
+        sx={{ justifyContent: { sm: 'center', lg: 'flex-start' } }}
+      >
         {portfolioItems.map(({ title, id, coverImage, summary, repoUrl }) => (
           <Grid key={id} item xs="auto">
             <PortfolioCard

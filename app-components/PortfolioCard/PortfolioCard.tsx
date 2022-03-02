@@ -19,7 +19,7 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
   repoUrl,
 }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, minWidth: 270 }}>
       <CardMedia
         component="img"
         alt="portfolio item"
