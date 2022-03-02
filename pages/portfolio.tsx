@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
-import { PageHead } from 'app-components';
+import Grid from '@mui/material/Grid';
+import { ErrorAlert, PageHead, PortfolioCard } from 'app-components';
 import {
   GetPortfolioTransformedResponse,
   getPortfolioItems,
@@ -7,21 +8,35 @@ import {
 
 const Portfolio: NextPage<{
   portfolioItems: GetPortfolioTransformedResponse;
-}> = ({ portfolioItems }) => {
+  error: any;
+}> = ({ portfolioItems, error }) => {
+  if (error) {
+    return <ErrorAlert error={error} />;
+  }
+
   return (
     <>
       <PageHead title={'David Armendáriz | Portfolio'} />
-      {portfolioItems.map(({ title, id }) => (
-        <div key={id}>{title}</div>
-      ))}
+      <Grid container columnSpacing={2}>
+        {portfolioItems.map(({ title, id, coverImage, summary, repoUrl }) => (
+          <Grid key={id} item xs="auto">
+            <PortfolioCard
+              title={title}
+              coverImage={coverImage}
+              summary={summary}
+              repoUrl={repoUrl}
+            />
+          </Grid>
+        ))}
+      </Grid>
     </>
   );
 };
 
 export async function getStaticProps({ preview = false }) {
-  const { data } = await getPortfolioItems();
+  const { data, error } = await getPortfolioItems(preview);
   return {
-    props: { preview, portfolioItems: data },
+    props: { preview, error, portfolioItems: data },
   };
 }
 

@@ -8,6 +8,7 @@ export const GetPortfolioItemsQuery = gql`
           id
         }
         title
+        summary
         repoUrl
         coverImage {
           url
