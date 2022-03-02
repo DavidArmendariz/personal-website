@@ -1,11 +1,8 @@
 import { NextPage } from 'next';
 import { PageHead } from 'app-components';
-import { executeQuery } from 'app-graphql/client';
 import {
-  GetPortfolioItems,
-  GetPortfolioItemsResponse,
   GetPortfolioTransformedResponse,
-  getPortfolioItemsTransformers,
+  getPortfolioItems,
 } from 'app-graphql/queries/portfolio';
 
 const Portfolio: NextPage<{
@@ -14,19 +11,15 @@ const Portfolio: NextPage<{
   return (
     <>
       <PageHead title={'David Armendáriz | Portfolio'} />
-      {portfolioItems.map(({ title }) => (
-        <div key={title}>{title}</div>
+      {portfolioItems.map(({ title, id }) => (
+        <div key={id}>{title}</div>
       ))}
     </>
   );
 };
 
 export async function getStaticProps({ preview = false }) {
-  const { data } = await executeQuery<
-    GetPortfolioItemsResponse,
-    GetPortfolioTransformedResponse
-  >({ query: GetPortfolioItems, transformer: getPortfolioItemsTransformers });
-  console.log(data);
+  const { data } = await getPortfolioItems();
   return {
     props: { preview, portfolioItems: data },
   };

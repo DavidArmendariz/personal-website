@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const GetPortfolioItems = gql`
+export const GetPortfolioItemsQuery = gql`
   query ($preview: Boolean) {
     portfolioCollection(preview: $preview) {
       items {
