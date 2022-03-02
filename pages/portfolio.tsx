@@ -20,7 +20,7 @@ const Portfolio: NextPage<{
       <Grid
         container
         columnSpacing={2}
-        sx={{ justifyContent: { sm: 'center', lg: 'flex-start' } }}
+        sx={{ justifyContent: { xs: 'center', lg: 'flex-start' } }}
       >
         {portfolioItems.map(({ title, id, coverImage, summary, repoUrl }) => (
           <Grid key={id} item xs="auto">
