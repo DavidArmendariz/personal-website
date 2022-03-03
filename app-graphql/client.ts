@@ -25,7 +25,7 @@ const authLink = (preview = false) =>
 const gqlClient = (preview = false) =>
   new ApolloClient({
     link: authLink(preview).concat(httpLink),
-    cache: new InMemoryCache({ addTypename: false }),
+    cache: new InMemoryCache(),
   });
 
 export async function executeQuery<RawResponse, TransformedResponse>({

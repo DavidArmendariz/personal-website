@@ -12,7 +12,7 @@ export type GetPortfolioItemsResponse = {
   };
 };
 
-export type GetPortfolioTransformedResponse = Array<{
+export type GetPortfolioItemsTransformedResponse = Array<{
   id: string;
   title: string;
   summary: string;

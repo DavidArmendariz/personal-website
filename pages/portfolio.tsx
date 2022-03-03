@@ -2,12 +2,12 @@ import { NextPage } from 'next';
 import Grid from '@mui/material/Grid';
 import { ErrorAlert, PageHead, PortfolioCard } from 'app-components';
 import {
-  GetPortfolioTransformedResponse,
+  GetPortfolioItemsTransformedResponse,
   getPortfolioItems,
 } from 'app-graphql/queries/portfolio';
 
 const Portfolio: NextPage<{
-  portfolioItems: GetPortfolioTransformedResponse;
+  portfolioItems: GetPortfolioItemsTransformedResponse;
   error: any;
 }> = ({ portfolioItems, error }) => {
   if (error) {
@@ -22,6 +22,7 @@ const Portfolio: NextPage<{
         columnSpacing={2}
         sx={{ justifyContent: { xs: 'center', lg: 'flex-start' } }}
       >
+        {!portfolioItems.length && <span>No portfolio items found</span>}
         {portfolioItems.map(({ title, id, coverImage, summary, repoUrl }) => (
           <Grid key={id} item xs="auto">
             <PortfolioCard
@@ -38,7 +39,7 @@ const Portfolio: NextPage<{
 };
 
 export async function getStaticProps({ preview = false }) {
-  const { data, error } = await getPortfolioItems(preview);
+  const { data, error } = await getPortfolioItems({ preview });
   return {
     props: { preview, error, portfolioItems: data },
   };
