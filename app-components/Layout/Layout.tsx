@@ -3,6 +3,8 @@ import Link from 'next/link';
 import ResumeIcon from '@mui/icons-material/ContactPage';
 import MenuIcon from '@mui/icons-material/Menu';
 import AboutMeIcon from '@mui/icons-material/Person';
+import BlogIcon from '@mui/icons-material/RssFeed';
+import CoursesIcon from '@mui/icons-material/School';
 import PortfolioIcon from '@mui/icons-material/Work';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -22,7 +24,7 @@ import SocialMedia from 'app-components/SocialMedia';
 import DarkMode from './DarkMode';
 
 const DRAWER_WIDTH = 240;
-const NavLinks = [
+const NAV_LINKS = [
   { id: 'about-me', name: 'About me', path: '/', Icon: AboutMeIcon },
   {
     id: 'portfolio',
@@ -30,6 +32,8 @@ const NavLinks = [
     path: '/portfolio',
     Icon: PortfolioIcon,
   },
+  { id: 'courses', name: 'Courses', path: '/courses', Icon: CoursesIcon },
+  { id: 'blog', name: 'Blog', path: '/blog', Icon: BlogIcon },
   { id: 'resume', name: 'Resume', path: '/resume', Icon: ResumeIcon },
 ];
 
@@ -49,7 +53,7 @@ const Layout: React.FC = ({ children }) => {
           <SocialMedia />
         </SocialMediaListItem>
         <Divider />
-        {NavLinks.map(({ id, name, path, Icon }) => (
+        {NAV_LINKS.map(({ id, name, path, Icon }) => (
           <Link key={id} href={path} passHref>
             <ListItemButton component="a">
               <ListItemIcon>

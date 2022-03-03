@@ -1,11 +1,11 @@
 import {
   GetPortfolioItemsResponse,
-  GetPortfolioTransformedResponse,
+  GetPortfolioItemsTransformedResponse,
 } from './types';
 
-export const getPortfolioItemsTransformers = (
+export const getPortfolioItemsTransformer = (
   data: GetPortfolioItemsResponse
-): GetPortfolioTransformedResponse => {
+): GetPortfolioItemsTransformedResponse => {
   const {
     portfolioCollection: { items },
   } = data;

@@ -1,18 +1,18 @@
 import { executeQuery } from 'app-graphql/client';
 import { GetPortfolioItemsQuery } from './queries';
-import { getPortfolioItemsTransformers } from './transformers';
+import { getPortfolioItemsTransformer } from './transformers';
 import {
   GetPortfolioItemsResponse,
-  GetPortfolioTransformedResponse,
+  GetPortfolioItemsTransformedResponse,
 } from './types';
 
-export const getPortfolioItems = async (preview = false) => {
+export const getPortfolioItems = async ({ preview = false }) => {
   const { data, error } = await executeQuery<
     GetPortfolioItemsResponse,
-    GetPortfolioTransformedResponse
+    GetPortfolioItemsTransformedResponse
   >({
     query: GetPortfolioItemsQuery,
-    transformer: getPortfolioItemsTransformers,
+    transformer: getPortfolioItemsTransformer,
     preview,
   });
 
