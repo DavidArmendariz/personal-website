@@ -4,7 +4,6 @@ module.exports = {
       process.env.NODE_ENV === 'production' ? { exclude: ['error'] } : false,
   },
   images: {
-    loader: 'akamai',
-    path: '',
+    domains: ['images.ctfassets.net'],
   },
 };

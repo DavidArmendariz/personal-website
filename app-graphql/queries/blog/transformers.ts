@@ -29,11 +29,13 @@ export const getBlogBySlugTransformer = (
   const {
     coverImage: { url },
     sys: { id },
+    body: { json },
     ...rest
   } = items[0];
   return {
     ...rest,
     id,
+    body: json,
     coverImage: url,
   };
 };

@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const GetBlogBySlugQuery = gql`
-  query ($slug: String!) {
-    blogCollection(where: $slug) {
+  query ($slug: String!, $height: Dimension!, $width: Dimension!) {
+    blogCollection(where: { slug: $slug }) {
       items {
         sys {
           id
@@ -10,7 +10,12 @@ export const GetBlogBySlugQuery = gql`
         title
         summary
         slug
-        coverImage
+        coverImage {
+          url(transform: { width: $width, height: $height })
+        }
+        body {
+          json
+        }
       }
     }
   }

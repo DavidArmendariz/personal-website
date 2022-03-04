@@ -27,9 +27,13 @@ export const getBlogItems = async (preview = false) => {
 export const getBlogBySlug = async ({
   preview = false,
   slug,
+  height,
+  width,
 }: {
   preview?: boolean;
   slug: string;
+  height: number;
+  width: number;
 }) => {
   const { data, error } = await executeQuery<
     GetBlogBySlugResponse,
@@ -40,6 +44,8 @@ export const getBlogBySlug = async ({
     preview,
     variables: {
       slug,
+      height,
+      width,
     },
   });
 

@@ -50,6 +50,14 @@ export async function executeQuery<RawResponse, TransformedResponse>({
     const transformedData = transformer(data);
     return { data: transformedData, error };
   } catch (error: any) {
-    return { data: null, error: error.message };
+    let errorMessage = error.message;
+    if (error?.networkError?.result?.errors) {
+      let errorsArray = error.networkError.result.errors.map(
+        ({ message }: { message: string }) => message
+      );
+      errorsArray = [errorMessage, ...errorsArray];
+      errorMessage = errorsArray.join('\n');
+    }
+    return { data: null, error: errorMessage };
   }
 }
