@@ -21,10 +21,11 @@ const Portfolio: NextPage<{
         container
         columnSpacing={2}
         sx={{ justifyContent: { xs: 'center', lg: 'flex-start' } }}
+        alignItems="stretch"
       >
         {!portfolioItems.length && <span>No portfolio items found</span>}
         {portfolioItems.map(({ title, id, coverImage, summary, repoUrl }) => (
-          <Grid key={id} item xs="auto">
+          <Grid key={id} item xs="auto" sx={{ display: 'flex' }}>
             <PortfolioCard
               title={title}
               coverImage={coverImage}

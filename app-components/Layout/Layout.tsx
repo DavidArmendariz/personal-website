@@ -49,9 +49,9 @@ const Layout: React.FC = ({ children }) => {
   const renderDrawer = () => (
     <Box role="presentation" onClick={handleDrawerToggle}>
       <List>
-        <SocialMediaListItem>
+        <ListItem sx={{ justifyContent: 'center', flexWrap: 'wrap' }}>
           <SocialMedia />
-        </SocialMediaListItem>
+        </ListItem>
         <Divider />
         {NAV_LINKS.map(({ id, name, path, Icon }) => (
           <Link key={id} href={path} passHref>
@@ -68,7 +68,7 @@ const Layout: React.FC = ({ children }) => {
   );
 
   return (
-    <Root>
+    <Box sx={{ display: 'flex' }}>
       <AppBar
         position="fixed"
         sx={{
@@ -111,38 +111,26 @@ const Layout: React.FC = ({ children }) => {
           </StyledDrawer>
         )}
       </Box>
-      <MainComponent
+      <Box
         component="main"
         sx={{
+          flexGrow: 1,
+          p: 3,
           width: { md: `calc(100% - ${DRAWER_WIDTH}px)` },
         }}
       >
         <Toolbar>{!smallScreen && <DarkMode />}</Toolbar>
         {children}
-      </MainComponent>
-    </Root>
+      </Box>
+    </Box>
   );
 };
 
 export default Layout;
-
-const Root = styled(Box)`
-  display: flex;
-`;
 
 const StyledDrawer = styled(Drawer)`
   .MuiDrawer-paper {
     box-sizing: border-box;
     width: ${DRAWER_WIDTH}px;
   }
-`;
-
-const SocialMediaListItem = styled(ListItem)`
-  justify-content: center;
-  flex-wrap: wrap;
-`;
-
-const MainComponent = styled(Box)`
-  flex-grow: 1;
-  padding: 3rem;
 `;
