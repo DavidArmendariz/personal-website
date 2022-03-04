@@ -5,7 +5,11 @@ type ErrorAlertProps = {
 };
 
 const ErrorAlert: React.FC<ErrorAlertProps> = ({ error }) => {
-  return <Alert severity="error">{error}</Alert>;
+  return (
+    <Alert sx={{ whiteSpace: 'pre-wrap' }} severity="error">
+      {error}
+    </Alert>
+  );
 };
 
 export default ErrorAlert;
