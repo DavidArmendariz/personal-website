@@ -19,7 +19,14 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
   repoUrl,
 }) => {
   return (
-    <Card sx={{ maxWidth: 345, minWidth: 270 }}>
+    <Card
+      sx={{
+        maxWidth: 345,
+        minWidth: 270,
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
       <CardMedia
         component="img"
         alt="portfolio item"
@@ -30,11 +37,20 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
         <Typography gutterBottom variant="h5" component="div">
           {title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography
+          sx={{
+            display: '-webkit-box',
+            overflow: 'hidden',
+            WebkitBoxOrient: 'vertical',
+            WebkitLineClamp: 3,
+          }}
+          variant="body2"
+          color="text.secondary"
+        >
           {summary}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions sx={{ mt: 'auto' }}>
         {repoUrl && (
           <Button onClick={() => window.open(repoUrl)} size="small">
             Go to repo
