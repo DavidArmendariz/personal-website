@@ -9,6 +9,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="David Armendariz Personal Website" />
       </Head>
       <ThemeProvider>
         <Layout>

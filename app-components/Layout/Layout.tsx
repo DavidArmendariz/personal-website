@@ -52,16 +52,20 @@ const Layout: React.FC = ({ children }) => {
         <ListItem sx={{ justifyContent: 'center', flexWrap: 'wrap' }}>
           <SocialMedia />
         </ListItem>
-        <Divider />
+        <li>
+          <Divider />
+        </li>
         {NAV_LINKS.map(({ id, name, path, Icon }) => (
-          <Link key={id} href={path} passHref>
-            <ListItemButton component="a">
-              <ListItemIcon>
-                <Icon />
-              </ListItemIcon>
-              <ListItemText primary={name} />
-            </ListItemButton>
-          </Link>
+          <ListItem key={id}>
+            <Link href={path} passHref>
+              <ListItemButton component="a">
+                <ListItemIcon>
+                  <Icon />
+                </ListItemIcon>
+                <ListItemText primary={name} />
+              </ListItemButton>
+            </Link>
+          </ListItem>
         ))}
       </List>
     </Box>

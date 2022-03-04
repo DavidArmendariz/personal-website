@@ -9,6 +9,7 @@ const DarkMode = () => {
 
   return (
     <IconButton
+      aria-label="dark mode button"
       sx={{ ml: 'auto' }}
       onClick={themeContext.toggleColorMode}
       color="inherit"
