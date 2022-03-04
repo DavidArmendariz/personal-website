@@ -23,16 +23,18 @@ const BlogIndex: NextPage<{
         sx={{ justifyContent: { xs: 'center', lg: 'flex-start' } }}
       >
         {!blogItems.length && <span>No blog items found</span>}
-        {blogItems.map(({ title, id, coverImage, summary, slug }) => (
-          <Grid key={id} item xs="auto">
-            <BlogCard
-              title={title}
-              coverImage={coverImage}
-              summary={summary}
-              slug={slug}
-            />
-          </Grid>
-        ))}
+        {blogItems.map(({ title, id, coverImage, summary, slug }) => {
+          return (
+            <Grid key={id} item xs="auto">
+              <BlogCard
+                title={title}
+                coverImage={coverImage}
+                summary={summary}
+                slug={slug}
+              />
+            </Grid>
+          );
+        })}
       </Grid>
     </>
   );

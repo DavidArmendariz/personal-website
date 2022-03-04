@@ -30,6 +30,7 @@ export const GetBlogItemsQuery = gql`
         }
         title
         summary
+        slug
         coverImage {
           url
         }
