@@ -4,7 +4,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import { styled } from '@mui/system';
+import { Ref } from 'react';
 
 export const SOCIAL_MEDIA_LINKS: Array<{
   id: string;
@@ -33,16 +33,12 @@ export const SOCIAL_MEDIA_LINKS: Array<{
   },
 ];
 
-const SocialMedia: React.FC<{ setRefs?: (ref: any) => void }> = ({
-  setRefs,
-}) => {
+const SocialMedia = ({ setRefs }: { setRefs?: Ref<HTMLAnchorElement> }) => {
   return (
     <>
       {SOCIAL_MEDIA_LINKS.map(({ id, url, Icon }) => (
-        <Link key={id} href={url} passHref>
-          <StyledAnchor aria-label={id} ref={setRefs} target="_blank">
-            <Icon sx={{ m: 1 }} />
-          </StyledAnchor>
+        <Link ref={setRefs} key={id} href={url} passHref>
+          <Icon sx={{ m: 1 }} />
         </Link>
       ))}
     </>
@@ -50,7 +46,3 @@ const SocialMedia: React.FC<{ setRefs?: (ref: any) => void }> = ({
 };
 
 export default SocialMedia;
-
-const StyledAnchor = styled('a')`
-  display: inline-block;
-`;
