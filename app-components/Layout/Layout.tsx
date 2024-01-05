@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import Link from 'next/link';
 import ResumeIcon from '@mui/icons-material/ContactPage';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -37,7 +37,7 @@ const NAV_LINKS = [
   { id: 'resume', name: 'Resume', path: '/resume', Icon: ResumeIcon },
 ];
 
-const Layout: React.FC = ({ children }) => {
+const Layout = ({ children }: { children: ReactNode }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const smallScreen = useMediaQuery(theme.breakpoints.down('md'));
@@ -57,14 +57,14 @@ const Layout: React.FC = ({ children }) => {
         </li>
         {NAV_LINKS.map(({ id, name, path, Icon }) => (
           <ListItem key={id}>
-            <Link href={path} passHref>
-              <ListItemButton component="a">
+            <StyledLink href={path}>
+              <ListItemButton>
                 <ListItemIcon>
                   <Icon />
                 </ListItemIcon>
                 <ListItemText primary={name} />
               </ListItemButton>
-            </Link>
+            </StyledLink>
           </ListItem>
         ))}
       </List>
@@ -137,4 +137,8 @@ const StyledDrawer = styled(Drawer)`
     box-sizing: border-box;
     width: ${DRAWER_WIDTH}px;
   }
+`;
+
+const StyledLink = styled(Link)`
+  width: 100%;
 `;
