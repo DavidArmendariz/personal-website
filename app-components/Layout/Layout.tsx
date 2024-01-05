@@ -1,3 +1,5 @@
+'use client';
+
 import { ReactNode, useState } from 'react';
 import Link from 'next/link';
 import ResumeIcon from '@mui/icons-material/ContactPage';
@@ -20,7 +22,7 @@ import Toolbar from '@mui/material/Toolbar';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { styled } from '@mui/system';
-import SocialMedia from 'app-components/SocialMedia';
+import SocialMedia from '@app-components/SocialMedia';
 import DarkMode from './DarkMode';
 
 const DRAWER_WIDTH = 240;

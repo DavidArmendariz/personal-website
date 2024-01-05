@@ -4,7 +4,6 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import { Ref } from 'react';
 
 export const SOCIAL_MEDIA_LINKS: Array<{
   id: string;
@@ -33,11 +32,11 @@ export const SOCIAL_MEDIA_LINKS: Array<{
   },
 ];
 
-const SocialMedia = ({ setRefs }: { setRefs?: Ref<HTMLAnchorElement> }) => {
+const SocialMedia = () => {
   return (
     <>
       {SOCIAL_MEDIA_LINKS.map(({ id, url, Icon }) => (
-        <Link ref={setRefs} key={id} href={url} passHref>
+        <Link key={id} href={url} passHref>
           <Icon sx={{ m: 1 }} />
         </Link>
       ))}
