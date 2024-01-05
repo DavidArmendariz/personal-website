@@ -1,41 +1,43 @@
-import { NextPage } from 'next';
+import { Metadata, NextPage } from 'next';
 import Grid from '@mui/material/Grid';
-import { ErrorAlert, PageHead, PortfolioCard } from 'app-components';
+import PortfolioCard from '@/components/PortfolioCard';
+import ErrorAlert from '@/components/ErrorAlert';
 import {
   GetPortfolioItemsTransformedResponse,
   getPortfolioItems,
-} from 'app-graphql/queries/portfolio';
+} from '@/graphql/queries/portfolio';
+
+export const metadata: Metadata = {
+  title: 'David Armendáriz - Portfolio',
+};
 
 const Portfolio: NextPage<{
   portfolioItems: GetPortfolioItemsTransformedResponse;
-  error: any;
+  error: string;
 }> = ({ portfolioItems, error }) => {
   if (error) {
     return <ErrorAlert error={error} />;
   }
 
   return (
-    <>
-      <PageHead title={'David Armendáriz | Portfolio'} />
-      <Grid
-        container
-        columnSpacing={2}
-        sx={{ justifyContent: { xs: 'center', lg: 'flex-start' } }}
-        alignItems="stretch"
-      >
-        {!portfolioItems.length && <span>No portfolio items found</span>}
-        {portfolioItems.map(({ title, id, coverImage, summary, repoUrl }) => (
-          <Grid key={id} item xs="auto" sx={{ display: 'flex' }}>
-            <PortfolioCard
-              title={title}
-              coverImage={coverImage}
-              summary={summary}
-              repoUrl={repoUrl}
-            />
-          </Grid>
-        ))}
-      </Grid>
-    </>
+    <Grid
+      container
+      columnSpacing={2}
+      sx={{ justifyContent: { xs: 'center', lg: 'flex-start' } }}
+      alignItems="stretch"
+    >
+      {!portfolioItems.length && <span>No portfolio items found</span>}
+      {portfolioItems.map(({ title, id, coverImage, summary, repoUrl }) => (
+        <Grid key={id} item xs="auto" sx={{ display: 'flex' }}>
+          <PortfolioCard
+            title={title}
+            coverImage={coverImage}
+            summary={summary}
+            repoUrl={repoUrl}
+          />
+        </Grid>
+      ))}
+    </Grid>
   );
 };
 

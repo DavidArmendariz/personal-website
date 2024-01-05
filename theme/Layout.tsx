@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import ResumeIcon from '@mui/icons-material/ContactPage';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -22,7 +22,7 @@ import Toolbar from '@mui/material/Toolbar';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { styled } from '@mui/system';
-import SocialMedia from '@app-components/SocialMedia';
+import SocialMedia from '@/components/SocialMedia';
 import DarkMode from './DarkMode';
 
 const DRAWER_WIDTH = 240;
@@ -39,7 +39,7 @@ const NAV_LINKS = [
   { id: 'resume', name: 'Resume', path: '/resume', Icon: ResumeIcon },
 ];
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const smallScreen = useMediaQuery(theme.breakpoints.down('md'));

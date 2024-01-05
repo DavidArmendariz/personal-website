@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, useEffect, useMemo, useState } from 'react';
 import { PaletteMode } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -18,7 +20,7 @@ export const ThemeContext = createContext<{
 
 const COLOR_MODE_KEY = 'color-mode';
 
-export const ThemeProvider: React.FC = ({ children }) => {
+export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [colorMode, setColorMode] = useState<PaletteMode>('light');
   const [isMounted, setIsMounted] = useState(false);
   const isDarkModeEnabled = useMediaQuery('(prefers-color-scheme: dark)', {

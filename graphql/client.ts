@@ -4,7 +4,7 @@ import {
   CONTENT_DELIVERY_ACCESS_TOKEN,
   CONTENT_PREVIEW_ACCESS_TOKEN,
   GRAPHQL_URL,
-} from 'app-config';
+} from '@/app-config';
 
 const httpLink = createHttpLink({
   uri: GRAPHQL_URL,

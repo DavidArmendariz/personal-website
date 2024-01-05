@@ -1,42 +1,44 @@
-import { NextPage } from 'next';
+import { Metadata, NextPage } from 'next';
 import Grid from '@mui/material/Grid';
-import { BlogCard, ErrorAlert, PageHead } from 'app-components';
+import ErrorAlert from '@/components/ErrorAlert';
+import BlogCard from '@/components/BlogCard';
 import {
   GetBlogItemsTransformedResponse,
   getBlogItems,
-} from 'app-graphql/queries/blog';
+} from '@/graphql/queries/blog';
+
+export const metadata: Metadata = {
+  title: 'David Armendáriz - Blog',
+};
 
 const BlogIndex: NextPage<{
   blogItems: GetBlogItemsTransformedResponse;
-  error: any;
+  error: string;
 }> = ({ blogItems, error }) => {
   if (error) {
     return <ErrorAlert error={error} />;
   }
 
   return (
-    <>
-      <PageHead title={'David Armendáriz | Blog'} />
-      <Grid
-        container
-        columnSpacing={2}
-        sx={{ justifyContent: { xs: 'center', lg: 'flex-start' } }}
-      >
-        {!blogItems.length && <span>No blog items found</span>}
-        {blogItems.map(({ title, id, coverImage, summary, slug }) => {
-          return (
-            <Grid key={id} item xs="auto">
-              <BlogCard
-                title={title}
-                coverImage={coverImage}
-                summary={summary}
-                slug={slug}
-              />
-            </Grid>
-          );
-        })}
-      </Grid>
-    </>
+    <Grid
+      container
+      columnSpacing={2}
+      sx={{ justifyContent: { xs: 'center', lg: 'flex-start' } }}
+    >
+      {!blogItems.length && <span>No blog items found</span>}
+      {blogItems.map(({ title, id, coverImage, summary, slug }) => {
+        return (
+          <Grid key={id} item xs="auto">
+            <BlogCard
+              title={title}
+              coverImage={coverImage}
+              summary={summary}
+              slug={slug}
+            />
+          </Grid>
+        );
+      })}
+    </Grid>
   );
 };
 

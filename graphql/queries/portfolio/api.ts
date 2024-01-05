@@ -1,4 +1,4 @@
-import { executeQuery } from 'app-graphql/client';
+import { executeQuery } from '@/graphql/client';
 import { GetPortfolioItemsQuery } from './queries';
 import { getPortfolioItemsTransformer } from './transformers';
 import {
