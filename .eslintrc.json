@@ -4,8 +4,6 @@
   "extends": ["plugin:@typescript-eslint/recommended", "next/core-web-vitals"],
   "rules": {
     "no-debugger": "warn",
-    "@typescript-eslint/no-empty-function": "off",
-    "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     "react/function-component-definition": [
       "warn",
