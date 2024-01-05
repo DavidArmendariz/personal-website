@@ -1,4 +1,4 @@
-import { executeQuery } from 'app-graphql/client';
+import { executeQuery } from '@/graphql/client';
 import { GetCourseItemsQuery } from './queries';
 import { getCourseItemsTransformer } from './transformers';
 import {

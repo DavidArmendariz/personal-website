@@ -1,10 +1,6 @@
 import Alert from '@mui/material/Alert';
 
-type ErrorAlertProps = {
-  error: string;
-};
-
-const ErrorAlert: React.FC<ErrorAlertProps> = ({ error }) => {
+const ErrorAlert = ({ error }: { error: string }) => {
   return (
     <Alert sx={{ whiteSpace: 'pre-wrap' }} severity="error">
       {error}

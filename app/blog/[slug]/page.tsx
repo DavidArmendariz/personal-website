@@ -2,12 +2,12 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import { ErrorAlert } from 'app-components';
+import ErrorAlert from '@/components/ErrorAlert';
 import {
   GetBlogBySlugTransformedResponse,
   getBlogBySlug,
-} from 'app-graphql/queries/blog';
+} from '@/graphql/queries/blog';
+import Text from '@/base-components/Text';
 
 const IMAGE_DIMENSIONS = {
   height: 400,
@@ -16,7 +16,7 @@ const IMAGE_DIMENSIONS = {
 
 const Blog: React.FC<{
   blog: GetBlogBySlugTransformedResponse | null;
-  error?: any;
+  error?: string;
 }> = ({ blog, error }) => {
   if (error) {
     return <ErrorAlert error={error} />;
@@ -40,10 +40,10 @@ const Blog: React.FC<{
       </Grid>
       <Grid item sx={{ maxWidth: width }}>
         <Grid item>
-          <Typography variant="h2">{blog.title}</Typography>
+          <Text variant="h2">{blog.title}</Text>
         </Grid>
         <Grid item sx={{ pt: 5 }}>
-          <Typography variant="h5">{blog.summary}</Typography>
+          <Text variant="h5">{blog.summary}</Text>
         </Grid>
         <hr />
         <div>{documentToReactComponents(blog.body)}</div>

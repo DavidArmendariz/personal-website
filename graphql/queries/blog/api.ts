@@ -1,4 +1,4 @@
-import { executeQuery } from 'app-graphql/client';
+import { executeQuery } from '@/graphql/client';
 import { GetBlogBySlugQuery, GetBlogItemsQuery } from './queries';
 import {
   getBlogBySlugTransformer,
