@@ -1,20 +1,26 @@
 import Typography, { TypographyProps } from '@mui/material/Typography';
 import React from 'react';
 
-const Text = ({
+const AppText = ({
   children,
   variant,
   component = 'span',
+  bottomMargin = false,
 }: {
   children: React.ReactNode;
   variant?: TypographyProps['variant'];
   component?: TypographyProps['component'];
+  bottomMargin?: boolean;
 }) => {
   return (
-    <Typography component={component} variant={variant}>
+    <Typography
+      gutterBottom={bottomMargin}
+      component={component}
+      variant={variant}
+    >
       {children}
     </Typography>
   );
 };
 
-export default Text;
+export default AppText;

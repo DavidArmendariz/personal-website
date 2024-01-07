@@ -3,7 +3,6 @@
   "plugins": ["@typescript-eslint"],
   "extends": ["plugin:@typescript-eslint/recommended", "next/core-web-vitals"],
   "rules": {
-    "@typescript-eslint/no-explicit-any": "off",
     "no-debugger": "warn",
     "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     "react/function-component-definition": [

@@ -1,4 +1,5 @@
-import Text from '@/base-components/Text';
+import AppStack from '@/base-components/AppStack';
+import AppText from '@/base-components/AppText';
 import SocialMedia from '@/components/SocialMedia';
 import '@/theme/globals.css';
 import { Metadata } from 'next';
@@ -9,17 +10,17 @@ export const metadata: Metadata = {
 
 const Home = () => {
   return (
-    <>
-      <Text variant="h1">David Armendáriz</Text>
-      <Text variant="h2">Software Developer / Mathematician</Text>
+    <AppStack>
+      <AppText variant="h1">David Armendáriz</AppText>
+      <AppText variant="h2">Software Developer / Mathematician</AppText>
       <SocialMedia />
       <hr />
-      <Text component="p">
+      <AppText component="p">
         I am a mathematician who transitioned to the Software Development
         industry. I am always learning new things and teaching them whenever I
         can. I also have a strong analytical and mathematical background.
-      </Text>
-    </>
+      </AppText>
+    </AppStack>
   );
 };
 
