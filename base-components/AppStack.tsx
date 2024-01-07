@@ -5,13 +5,22 @@ const AppStack = ({
   children,
   spacing,
   direction,
+  alignItems,
+  justifyContent,
 }: {
   children: React.ReactNode;
   spacing?: StackProps['spacing'];
   direction?: StackProps['direction'];
+  alignItems?: StackProps['alignItems'];
+  justifyContent?: StackProps['justifyContent'];
 }) => {
   return (
-    <Stack spacing={spacing} direction={direction}>
+    <Stack
+      spacing={spacing}
+      direction={direction}
+      alignItems={alignItems}
+      justifyContent={justifyContent}
+    >
       {children}
     </Stack>
   );
