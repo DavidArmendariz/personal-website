@@ -27,23 +27,26 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     noSsr: true,
   });
 
-  useEffect(() => {
-    let initialColorMode: PaletteMode;
-    const persistedColorPreference =
-      window.localStorage.getItem(COLOR_MODE_KEY);
-    const hasPersistedColorPreference =
-      persistedColorPreference &&
-      (persistedColorPreference === 'dark' ||
-        persistedColorPreference === 'light');
-    if (hasPersistedColorPreference) {
-      initialColorMode = persistedColorPreference;
-    } else {
-      initialColorMode = isDarkModeEnabled ? 'dark' : 'light';
-    }
-    console.log(`Setting theme color mode to "${initialColorMode}"...`);
-    setIsMounted(true);
-    setColorMode(initialColorMode);
-  }, [isDarkModeEnabled]);
+  useEffect(
+    function setInitialColorMode() {
+      let initialColorMode: PaletteMode;
+      const persistedColorPreference =
+        window.localStorage.getItem(COLOR_MODE_KEY);
+      const hasPersistedColorPreference =
+        persistedColorPreference &&
+        (persistedColorPreference === 'dark' ||
+          persistedColorPreference === 'light');
+      if (hasPersistedColorPreference) {
+        initialColorMode = persistedColorPreference;
+      } else {
+        initialColorMode = isDarkModeEnabled ? 'dark' : 'light';
+      }
+      console.log(`Setting theme color mode to "${initialColorMode}"...`);
+      setIsMounted(true);
+      setColorMode(initialColorMode);
+    },
+    [isDarkModeEnabled]
+  );
 
   const themeContextValue = useMemo(
     () => ({

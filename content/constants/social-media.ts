@@ -11,7 +11,7 @@ export const SOCIAL_MEDIA_LINKS: Array<{
 }> = [
   {
     id: 'twitter',
-    url: 'https://twitter.com/davidaap_',
+    url: 'https://twitter.com/_davidaap_',
     Icon: TwitterIcon,
   },
   {

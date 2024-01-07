@@ -1,7 +1,6 @@
 import AppStack from '@/base-components/AppStack';
 import AppText from '@/base-components/AppText';
 import SocialMedia from '@/components/SocialMedia';
-import '@/theme/globals.css';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

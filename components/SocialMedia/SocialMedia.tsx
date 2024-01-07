@@ -6,7 +6,7 @@ const SocialMedia = () => {
   return (
     <AppStack direction={'row'}>
       {SOCIAL_MEDIA_LINKS.map(({ id, url, Icon }) => (
-        <Link key={id} href={url} passHref>
+        <Link key={id} href={url}>
           <Icon sx={{ m: 1 }} />
         </Link>
       ))}
