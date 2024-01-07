@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'David Armendáriz - Software Developer / Mathematician',
+  description: 'Software Developer / Mathematician',
 };
 
 const Home = () => {
