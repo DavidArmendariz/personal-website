@@ -3,6 +3,7 @@ import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import AppText from '@/base-components/AppText';
 import Typography from '@mui/material/Typography';
 
 const BlogCard = ({
@@ -13,7 +14,7 @@ const BlogCard = ({
 }: {
   slug: string;
   title: string;
-  coverImage: string;
+  coverImage?: string;
   summary: string;
 }) => {
   return (
@@ -27,12 +28,10 @@ const BlogCard = ({
             image={coverImage}
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <AppText bottomMargin variant="h5" component="div">
               {title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {summary}
-            </Typography>
+            </AppText>
+            <Typography variant="body2">{summary}</Typography>
           </CardContent>
         </CardActionArea>
       </Link>

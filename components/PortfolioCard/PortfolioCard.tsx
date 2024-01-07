@@ -1,22 +1,21 @@
-import Button from '@mui/material/Button';
+import Link from 'next/link';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import AppText from '@/base-components/AppText';
 
-type PortfolioCardProps = {
-  title: string;
-  coverImage: string;
-  summary: string;
-  repoUrl: string;
-};
-
-const PortfolioCard: React.FC<PortfolioCardProps> = ({
+const PortfolioCard = ({
   title,
   coverImage,
   summary,
   repoUrl,
+}: {
+  title: string;
+  coverImage?: string;
+  summary: string;
+  repoUrl: string;
 }) => {
   return (
     <Card
@@ -34,9 +33,9 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
         image={coverImage}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <AppText bottomMargin variant="h5" component="div">
           {title}
-        </Typography>
+        </AppText>
         <Typography
           sx={{
             display: '-webkit-box',
@@ -51,11 +50,7 @@ const PortfolioCard: React.FC<PortfolioCardProps> = ({
         </Typography>
       </CardContent>
       <CardActions sx={{ mt: 'auto' }}>
-        {repoUrl && (
-          <Button onClick={() => window.open(repoUrl)} size="small">
-            Go to repo
-          </Button>
-        )}
+        {repoUrl && <Link href={repoUrl}>Go to repo</Link>}
       </CardActions>
     </Card>
   );

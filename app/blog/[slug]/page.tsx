@@ -1,78 +1,44 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import Grid from '@mui/material/Grid';
-import ErrorAlert from '@/components/ErrorAlert';
-import {
-  GetBlogBySlugTransformedResponse,
-  getBlogBySlug,
-} from '@/graphql/queries/blog';
-import Text from '@/base-components/Text';
+import AppText from '@/base-components/AppText';
+import client from '@/content/client';
+import { TypeBlogSkeleton } from '@/content/types';
 
 const IMAGE_DIMENSIONS = {
   height: 400,
   width: 800,
 };
 
-const Blog: React.FC<{
-  blog: GetBlogBySlugTransformedResponse | null;
-  error?: string;
-}> = ({ blog, error }) => {
-  if (error) {
-    return <ErrorAlert error={error} />;
-  }
-
-  if (!blog) {
-    return <div>No blog found</div>;
-  }
-
-  const { width, height } = IMAGE_DIMENSIONS;
+const Blog = async ({ params }: { params: { slug: string } }) => {
+  const blogSlug = params.slug;
+  const blogEntry =
+    await client.withoutUnresolvableLinks.getEntry<TypeBlogSkeleton>(blogSlug);
+  const { coverImage, title, summary, body } = blogEntry.fields;
+  const coverImageUrl = coverImage?.fields.file?.url || '';
 
   return (
     <Grid container flexDirection="column" alignItems="center">
       <Grid item>
         <Image
-          src={blog.coverImage}
+          src={coverImageUrl}
           alt="Blog Cover Image"
-          width={width}
-          height={height}
+          width={IMAGE_DIMENSIONS.width}
+          height={IMAGE_DIMENSIONS.height}
         />
       </Grid>
-      <Grid item sx={{ maxWidth: width }}>
+      <Grid item sx={{ maxWidth: IMAGE_DIMENSIONS.width }}>
         <Grid item>
-          <Text variant="h2">{blog.title}</Text>
+          <AppText variant="h2">{title}</AppText>
         </Grid>
         <Grid item sx={{ pt: 5 }}>
-          <Text variant="h5">{blog.summary}</Text>
+          <AppText variant="h5">{summary}</AppText>
         </Grid>
         <hr />
-        <div>{documentToReactComponents(blog.body)}</div>
+        <div>{documentToReactComponents(body)}</div>
       </Grid>
     </Grid>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const {
-    query: { slug },
-  } = context;
-
-  if (typeof slug === 'string') {
-    const { width, height } = IMAGE_DIMENSIONS;
-    const { data, error } = await getBlogBySlug({ slug, height, width });
-    return {
-      props: {
-        blog: data,
-        error,
-      },
-    };
-  }
-
-  return {
-    props: {
-      blog: null,
-    },
-  };
 };
 
 export default Blog;
