@@ -4,7 +4,7 @@ import ExternalLink from './ExternalLink';
 
 const SocialMedia = () => {
   return (
-    <AppStack direction={'row'}>
+    <AppStack direction="row">
       {SOCIAL_MEDIA_LINKS.map(({ id, url, Icon }) => (
         <ExternalLink key={id} href={url}>
           <Icon sx={{ m: 1 }} />

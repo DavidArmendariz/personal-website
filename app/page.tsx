@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 const Home = () => {
   return (
     <AppStack spacing={2}>
-      <AppStack direction="row" alignItems={'center'} spacing={3}>
+      <AppStack direction="row" alignItems="center" spacing={3}>
         <Image
-          src={'/photo.jpg'}
+          src="/photo.jpg"
           alt="Profile picture from David"
           width={200}
           height={200}
