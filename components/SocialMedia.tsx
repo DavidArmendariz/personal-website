@@ -1,14 +1,14 @@
-import Link from 'next/link';
 import AppStack from '@/base-components/AppStack';
 import { SOCIAL_MEDIA_LINKS } from '@/content/constants/social-media';
+import ExternalLink from './ExternalLink';
 
 const SocialMedia = () => {
   return (
     <AppStack direction={'row'}>
       {SOCIAL_MEDIA_LINKS.map(({ id, url, Icon }) => (
-        <Link key={id} href={url} target="_blank">
+        <ExternalLink key={id} href={url}>
           <Icon sx={{ m: 1 }} />
-        </Link>
+        </ExternalLink>
       ))}
     </AppStack>
   );
