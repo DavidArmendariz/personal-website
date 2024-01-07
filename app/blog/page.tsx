@@ -1,23 +1,18 @@
-import { Metadata, NextPage } from 'next';
+import { Metadata } from 'next';
 import Grid from '@mui/material/Grid';
-import ErrorAlert from '@/components/ErrorAlert';
 import BlogCard from '@/components/BlogCard';
-import {
-  GetBlogItemsTransformedResponse,
-  getBlogItems,
-} from '@/graphql/queries/blog';
+import client from '@/content/client';
 
 export const metadata: Metadata = {
   title: 'David Armendáriz - Blog',
 };
 
-const BlogIndex: NextPage<{
-  blogItems: GetBlogItemsTransformedResponse;
-  error: string;
-}> = ({ blogItems, error }) => {
-  if (error) {
-    return <ErrorAlert error={error} />;
-  }
+const Page = async () => {
+  const blogEntries = await client.getEntries({
+    content_type: 'blog',
+  });
+
+  const blogItems: any = blogEntries.items;
 
   return (
     <Grid
@@ -26,12 +21,14 @@ const BlogIndex: NextPage<{
       sx={{ justifyContent: { xs: 'center', lg: 'flex-start' } }}
     >
       {!blogItems.length && <span>No blog items found</span>}
-      {blogItems.map(({ title, id, coverImage, summary, slug }) => {
+      {blogItems.map((blogItem: any) => {
+        const { title, coverImage, summary, slug } = blogItem.fields;
+        const coverImageUrl = coverImage.fields.file.url;
         return (
-          <Grid key={id} item xs="auto">
+          <Grid key={slug} item xs="auto">
             <BlogCard
               title={title}
-              coverImage={coverImage}
+              coverImage={coverImageUrl}
               summary={summary}
               slug={slug}
             />
@@ -42,11 +39,4 @@ const BlogIndex: NextPage<{
   );
 };
 
-export async function getStaticProps({ preview = false }) {
-  const { data, error } = await getBlogItems(preview);
-  return {
-    props: { preview, error, blogItems: data },
-  };
-}
-
-export default BlogIndex;
+export default Page;
