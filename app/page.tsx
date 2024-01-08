@@ -12,15 +12,15 @@ export const metadata: Metadata = {
 const Home = () => {
   return (
     <AppStack spacing={2}>
-      <AppStack direction="row" alignItems="center" spacing={3}>
+      <AppStack alignItems="center">
         <Image
           src="/photo.jpg"
           alt="Profile picture from David"
-          sizes="200px"
-          style={{ width: '100%', height: 'auto' }}
+          width={200}
+          height={200}
           priority={false}
         />
-        <AppStack>
+        <AppStack id="personal-info">
           <AppText variant="h1">David Armendáriz</AppText>
           <AppText variant="h2">Software Developer / Mathematician</AppText>
           <SocialMedia />
