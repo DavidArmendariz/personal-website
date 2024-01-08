@@ -25,6 +25,7 @@ const Page = async () => {
       {blogItems.length ? (
         blogItems.map((blogItem) => {
           const { title, coverImage, summary, slug } = blogItem.fields;
+          console.log(coverImage);
           const coverImageUrl = coverImage?.fields.file?.url;
           return (
             <Grid key={slug} item xs="auto">
