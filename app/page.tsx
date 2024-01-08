@@ -16,8 +16,8 @@ const Home = () => {
         <Image
           src="/photo.jpg"
           alt="Profile picture from David"
-          width={200}
-          height={200}
+          sizes="200px"
+          style={{ width: '100%', height: 'auto' }}
           priority={false}
         />
         <AppStack>
