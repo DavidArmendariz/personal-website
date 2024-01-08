@@ -13,18 +13,22 @@ const IMAGE_DIMENSIONS = {
 const Blog = async ({ params }: { params: { slug: string } }) => {
   const blogSlug = params.slug;
   const blogEntry =
-    await client.withoutUnresolvableLinks.getEntry<TypeBlogSkeleton>(blogSlug);
-  const { coverImage, title, summary, body } = blogEntry.fields;
+    await client.withoutUnresolvableLinks.getEntries<TypeBlogSkeleton>({
+      content_type: 'blog',
+      'fields.slug[in]': [blogSlug],
+    });
+  const { coverImage, title, summary, body } = blogEntry.items[0].fields;
   const coverImageUrl = coverImage?.fields.file?.url || '';
 
   return (
     <Grid container flexDirection="column" alignItems="center">
       <Grid item>
         <Image
-          src={coverImageUrl}
+          src={`https:${coverImageUrl}`}
           alt="Blog Cover Image"
           width={IMAGE_DIMENSIONS.width}
           height={IMAGE_DIMENSIONS.height}
+          priority={false}
         />
       </Grid>
       <Grid item sx={{ maxWidth: IMAGE_DIMENSIONS.width }}>
