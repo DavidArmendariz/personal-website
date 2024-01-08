@@ -3,12 +3,16 @@ import React from 'react';
 
 const AppStack = ({
   children,
+  className,
+  id,
   spacing,
   direction,
   alignItems,
   justifyContent,
 }: {
   children: React.ReactNode;
+  className?: string;
+  id?: string;
   spacing?: StackProps['spacing'];
   direction?: StackProps['direction'];
   alignItems?: StackProps['alignItems'];
@@ -16,6 +20,8 @@ const AppStack = ({
 }) => {
   return (
     <Stack
+      id={id}
+      className={className}
       spacing={spacing}
       direction={direction}
       alignItems={alignItems}
