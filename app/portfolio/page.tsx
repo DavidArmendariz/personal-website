@@ -6,6 +6,7 @@ import client from '@/content/client';
 
 export const metadata: Metadata = {
   title: 'David Armendáriz - Portfolio',
+  description: "Projects I've worked on",
 };
 
 const Page = async () => {
