@@ -16,7 +16,7 @@ const PortfolioCard = ({
   title: string;
   coverImage?: string;
   summary: string;
-  repoUrl: string;
+  repoUrl?: string;
   siteUrl?: string;
 }) => {
   return (

@@ -24,11 +24,16 @@ const Page = async () => {
       alignItems="stretch"
     >
       {courseItems.length ? (
-        courseItems.map((courseItem) => {
-          const { title, coverImage, summary, slug } = courseItem.fields;
+        courseItems.map((courseItem, index) => {
+          const { title, coverImage, summary } = courseItem.fields;
           const coverImageUrl = coverImage?.fields.file?.url;
           return (
-            <Grid key={slug} item xs="auto" sx={{ display: 'flex' }}>
+            <Grid
+              key={`course-${index}`}
+              item
+              xs="auto"
+              sx={{ display: 'flex' }}
+            >
               <CourseCard
                 title={title}
                 coverImage={coverImageUrl}

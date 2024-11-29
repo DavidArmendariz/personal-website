@@ -8,7 +8,7 @@ import type {
 
 export type TypePortfolioFields = {
   title: EntryFieldTypes.Symbol;
-  repoUrl: EntryFieldTypes.Symbol;
+  repoUrl?: EntryFieldTypes.Symbol;
   siteUrl?: EntryFieldTypes.Symbol;
   coverImage: EntryFieldTypes.AssetLink;
   summary: EntryFieldTypes.Text;
