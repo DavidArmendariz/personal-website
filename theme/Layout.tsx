@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import ResumeIcon from '@mui/icons-material/ContactPage';
 import MenuIcon from '@mui/icons-material/Menu';
 import AboutMeIcon from '@mui/icons-material/Person';
 import BlogIcon from '@mui/icons-material/RssFeed';
@@ -36,7 +35,6 @@ const NAV_LINKS = [
   },
   { id: 'courses', name: 'Courses', path: '/courses', Icon: CoursesIcon },
   { id: 'blog', name: 'Blog', path: '/blog', Icon: BlogIcon },
-  { id: 'resume', name: 'Resume', path: '/resume', Icon: ResumeIcon },
 ];
 
 const Layout = ({ children }: { children: React.ReactNode }) => {

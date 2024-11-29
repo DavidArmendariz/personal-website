@@ -3,6 +3,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import InstagramIcon from '@mui/icons-material/Instagram';
 
 export const SOCIAL_MEDIA_LINKS: Array<{
   id: string;
@@ -10,14 +11,14 @@ export const SOCIAL_MEDIA_LINKS: Array<{
   Icon: SvgIconComponent;
 }> = [
   {
-    id: 'twitter',
-    url: 'https://twitter.com/_davidaap_',
-    Icon: TwitterIcon,
-  },
-  {
     id: 'linkedin',
     url: 'https://www.linkedin.com/in/david-adrian-armendariz/',
     Icon: LinkedInIcon,
+  },
+  {
+    id: 'instagram',
+    url: 'https://instagram.com/mathsdev',
+    Icon: InstagramIcon,
   },
   {
     id: 'github',
@@ -26,7 +27,12 @@ export const SOCIAL_MEDIA_LINKS: Array<{
   },
   {
     id: 'youtube',
-    url: 'https://www.youtube.com/channel/UC4jmaY21ri9n3DteRwuoJaA',
+    url: 'https://www.youtube.com/@mathsdev',
     Icon: YouTubeIcon,
+  },
+  {
+    id: 'twitter',
+    url: 'https://twitter.com/mathsdev_',
+    Icon: TwitterIcon,
   },
 ];
