@@ -21,6 +21,7 @@ const Page = async () => {
     <Grid
       container
       columnSpacing={2}
+      rowSpacing={2}
       sx={{ justifyContent: { xs: 'center', lg: 'flex-start' } }}
       alignItems="stretch"
     >
