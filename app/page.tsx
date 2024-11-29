@@ -4,8 +4,18 @@ import { Metadata } from 'next';
 import Header from './header';
 
 export const metadata: Metadata = {
-  title: 'David Armendáriz - Software Developer / Mathematician',
+  title: 'David Armendáriz - Senior Software Developer / Mathematician',
   description: 'Software Developer / Mathematician',
+  openGraph: {
+    images: [
+      {
+        url: '/pp.jpg',
+        width: 800,
+        height: 600,
+        alt: 'David Armendáriz - Senior Software Developer / Mathematician',
+      },
+    ],
+  },
 };
 
 const Home = () => {
