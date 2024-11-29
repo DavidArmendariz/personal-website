@@ -1,17 +1,21 @@
 import AppText from '@/base-components/AppText';
+import CardActions from '@mui/material/CardActions';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import ExternalLink from './ExternalLink';
 
 const CourseCard = ({
   title,
   coverImage,
   summary,
+  link,
 }: {
   title: string;
   coverImage?: string;
   summary: string;
+  link: string;
 }) => {
   return (
     <Card
@@ -45,6 +49,9 @@ const CourseCard = ({
           {summary}
         </Typography>
       </CardContent>
+      <CardActions sx={{ mt: 'auto' }}>
+        {link && <ExternalLink href={link}>Go to the course</ExternalLink>}
+      </CardActions>
     </Card>
   );
 };
