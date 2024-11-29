@@ -9,9 +9,8 @@ import type {
 export type TypeCourseFields = {
   title: EntryFieldTypes.Symbol;
   summary: EntryFieldTypes.Text;
-  slug: EntryFieldTypes.Symbol;
   coverImage: EntryFieldTypes.AssetLink;
-  body: EntryFieldTypes.RichText;
+  link: EntryFieldTypes.Symbol;
 };
 
 export type TypeCourseSkeleton = EntrySkeletonType<TypeCourseFields, 'course'>;
