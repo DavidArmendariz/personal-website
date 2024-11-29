@@ -11,6 +11,8 @@ export const metadata: Metadata = {
     images: {
       url: 'https://www.mathsdev.com/banner.jpg',
     },
+    url: 'https://www.mathsdev.com',
+    type: 'website',
   },
 };
 
