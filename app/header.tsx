@@ -19,7 +19,7 @@ const Header = () => {
       spacing={3}
     >
       <Image
-        src="/photo.jpg"
+        src="/pp.jpg"
         alt="Profile picture from David"
         width={200}
         height={200}
