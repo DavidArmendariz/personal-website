@@ -27,7 +27,7 @@ const Header = () => {
       />
       <AppStack id="personal-info">
         <AppText variant="h1">David Armendáriz</AppText>
-        <AppText variant="h2">Software Developer / Mathematician</AppText>
+        <AppText variant="h2">Mathematician & Senior Software Engineer</AppText>
         <SocialMedia />
       </AppStack>
     </AppStack>
