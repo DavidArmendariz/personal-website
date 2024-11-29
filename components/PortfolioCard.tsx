@@ -11,11 +11,13 @@ const PortfolioCard = ({
   coverImage,
   summary,
   repoUrl,
+  siteUrl,
 }: {
   title: string;
   coverImage?: string;
   summary: string;
   repoUrl: string;
+  siteUrl?: string;
 }) => {
   return (
     <Card
@@ -51,6 +53,7 @@ const PortfolioCard = ({
       </CardContent>
       <CardActions sx={{ mt: 'auto' }}>
         {repoUrl && <ExternalLink href={repoUrl}>Go to repo</ExternalLink>}
+        {siteUrl && <ExternalLink href={siteUrl}>Go to site</ExternalLink>}
       </CardActions>
     </Card>
   );

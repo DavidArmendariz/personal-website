@@ -26,7 +26,8 @@ const Page = async () => {
     >
       {portfolioItems.length ? (
         portfolioItems.map((portfolioItem, index) => {
-          const { title, repoUrl, coverImage, summary } = portfolioItem.fields;
+          const { title, repoUrl, coverImage, summary, siteUrl } =
+            portfolioItem.fields;
           const coverImageUrl = coverImage?.fields.file?.url;
           return (
             <Grid
@@ -40,6 +41,7 @@ const Page = async () => {
                 coverImage={coverImageUrl}
                 summary={summary}
                 repoUrl={repoUrl}
+                siteUrl={siteUrl}
               />
             </Grid>
           );
