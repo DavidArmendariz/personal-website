@@ -20,12 +20,13 @@ const Page = async () => {
     <Grid
       container
       columnSpacing={2}
+      rowSpacing={2}
       sx={{ justifyContent: { xs: 'center', lg: 'flex-start' } }}
       alignItems="stretch"
     >
       {courseItems.length ? (
         courseItems.map((courseItem, index) => {
-          const { title, coverImage, summary } = courseItem.fields;
+          const { title, coverImage, summary, link } = courseItem.fields;
           const coverImageUrl = coverImage?.fields.file?.url;
           return (
             <Grid
@@ -38,6 +39,7 @@ const Page = async () => {
                 title={title}
                 coverImage={coverImageUrl}
                 summary={summary}
+                link={link}
               />
             </Grid>
           );
