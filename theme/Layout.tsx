@@ -33,7 +33,7 @@ const NAV_LINKS = [
     path: '/portfolio',
     Icon: PortfolioIcon,
   },
-  { id: 'courses', name: 'Courses', path: '/courses', Icon: CoursesIcon },
+  { id: 'courses', name: 'My Courses', path: '/courses', Icon: CoursesIcon },
   { id: 'blog', name: 'Blog', path: '/blog', Icon: BlogIcon },
 ];
 
