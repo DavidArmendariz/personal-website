@@ -15,7 +15,7 @@ const Home = () => {
       <AppText component="p">
         I am a mathematician and a frontend-focused full-stack software
         engineer. I am always learning new things and spreading knowledge. My
-        main skill is to learn fast and to have a strong <b>analytical</b> and
+        main skill is to learn fast and to have a strong <b>analytical</b> and{' '}
         <b>mathematical</b> mindset. I am open-minded, adaptable, a{' '}
         <b>critical thinker</b>, a problem-solving lover and a{' '}
         <b>clean-code obsessed</b>. Currently learning more about cybersecurity,
