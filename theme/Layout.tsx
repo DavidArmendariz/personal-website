@@ -20,9 +20,9 @@ import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { styled } from '@mui/system';
 import SocialMedia from '@/components/SocialMedia';
 import DarkMode from './DarkMode';
+import styled from '@emotion/styled';
 
 const DRAWER_WIDTH = 240;
 const NAV_LINKS = [
