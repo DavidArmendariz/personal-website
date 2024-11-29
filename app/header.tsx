@@ -7,6 +7,7 @@ import AppText from '@/base-components/AppText';
 import SocialMedia from '@/components/SocialMedia';
 import { useMediaQuery } from '@mui/material';
 import Image from 'next/image';
+import styled from '@emotion/styled';
 
 const Header = () => {
   const theme = useTheme();
@@ -18,7 +19,7 @@ const Header = () => {
       alignItems="center"
       spacing={3}
     >
-      <Image
+      <ProfilePicture
         src="/pp.jpg"
         alt="Profile picture from David"
         width={200}
@@ -35,3 +36,7 @@ const Header = () => {
 };
 
 export default Header;
+
+const ProfilePicture = styled(Image)`
+  border-radius: 50%;
+`;
