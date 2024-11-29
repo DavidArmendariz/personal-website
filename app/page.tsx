@@ -8,11 +8,9 @@ export const metadata: Metadata = {
   description:
     'David Armendariz is a mathematician and frontend-focused full-stack software engineer with a passion for cybersecurity. Explore his portfolio showcasing innovative software development, AI-assisted solutions, and cutting-edge web applications. Learn more about his work in secure software development, ethical hacking, and tech-driven solutions for businesses.',
   openGraph: {
-    images: [
-      {
-        url: 'https://www.mathsdev.com/banner.jpg',
-      },
-    ],
+    images: {
+      url: 'https://www.mathsdev.com/banner.jpg',
+    },
   },
 };
 
