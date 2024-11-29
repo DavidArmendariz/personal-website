@@ -10,10 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: 'https://www.mathsdev.com/pp.jpg',
-        width: 800,
-        height: 600,
-        alt: 'David Armendáriz - Senior Software Developer / Mathematician',
+        url: 'https://www.mathsdev.com/banner.jpg',
       },
     ],
   },
