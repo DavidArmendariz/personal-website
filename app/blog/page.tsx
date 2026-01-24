@@ -28,7 +28,7 @@ const Page = async () => {
           console.log(coverImage);
           const coverImageUrl = coverImage?.fields.file?.url;
           return (
-            <Grid key={slug} item xs="auto">
+            <Grid key={slug} size="auto">
               <BlogCard
                 title={title}
                 coverImage={coverImageUrl}

@@ -12,31 +12,31 @@
     "prettier:fix": "prettier --write ."
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^15.19.0",
+    "@contentful/rich-text-react-renderer": "^16.1.6",
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.15.3",
-    "@mui/material": "^5.15.3",
-    "@mui/material-nextjs": "^5.15.3",
-    "contentful": "^10.6.16",
-    "next": "^14.0.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "@mui/icons-material": "^7.3.7",
+    "@mui/material": "^7.3.7",
+    "@mui/material-nextjs": "^7.3.7",
+    "contentful": "^11.10.2",
+    "next": "^16.1.4",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "react-markdown": "^10.1.0"
   },
   "devDependencies": {
-    "@contentful/rich-text-types": "^16.3.0",
-    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-    "@types/node": "^20.10.6",
+    "@contentful/rich-text-types": "^17.2.5",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
+    "@types/node": "^25.0.10",
     "@types/react": "19.2.9",
-    "@typescript-eslint/eslint-plugin": "^6.17.0",
-    "@typescript-eslint/parser": "^6.17.0",
+    "@typescript-eslint/eslint-plugin": "^8.53.1",
+    "@typescript-eslint/parser": "^8.53.1",
     "cf-content-types-generator": "^2.13.1",
-    "eslint": "8.56.0",
-    "eslint-config-next": "^14.0.4",
+    "eslint": "9.39.2",
+    "eslint-config-next": "^16.1.4",
     "prettier": "^3.1.1",
     "typescript": "^5.3.3",
-    "vercel": "^33.0.2"
+    "vercel": "^50.5.0"
   }
 }

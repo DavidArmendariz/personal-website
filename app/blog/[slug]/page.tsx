@@ -24,7 +24,7 @@ const Blog = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <Grid container flexDirection="column" alignItems="center">
-      <Grid item>
+      <Grid>
         <Image
           src={`https:${coverImageUrl}`}
           alt="Blog Cover Image"
@@ -33,11 +33,11 @@ const Blog = async ({ params }: { params: { slug: string } }) => {
           priority={false}
         />
       </Grid>
-      <Grid item sx={{ maxWidth: IMAGE_DIMENSIONS.width }}>
-        <Grid item>
+      <Grid sx={{ maxWidth: IMAGE_DIMENSIONS.width }}>
+        <Grid>
           <AppText variant="h2">{title}</AppText>
         </Grid>
-        <Grid item sx={{ pt: 5 }}>
+        <Grid sx={{ pt: 5 }}>
           <Typography variant="h5" component="div">
             <ReactMarkdown>{summary}</ReactMarkdown>
           </Typography>

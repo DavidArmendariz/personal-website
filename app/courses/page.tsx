@@ -29,12 +29,7 @@ const Page = async () => {
           const { title, coverImage, summary, link } = courseItem.fields;
           const coverImageUrl = coverImage?.fields.file?.url;
           return (
-            <Grid
-              key={`course-${index}`}
-              item
-              xs="auto"
-              sx={{ display: 'flex' }}
-            >
+            <Grid key={`course-${index}`} size="auto" sx={{ display: 'flex' }}>
               <CourseCard
                 title={title}
                 coverImage={coverImageUrl}

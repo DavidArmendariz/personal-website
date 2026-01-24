@@ -41,7 +41,6 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       } else {
         initialColorMode = isDarkModeEnabled ? 'dark' : 'light';
       }
-      console.log(`Setting theme color mode to "${initialColorMode}"...`);
       setIsMounted(true);
       setColorMode(initialColorMode);
     },

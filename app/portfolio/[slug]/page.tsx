@@ -32,7 +32,7 @@ const PortfolioDetail = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <Grid container flexDirection="column" alignItems="center" gap={3}>
-      <Grid item sx={{ maxWidth: '100%' }}>
+      <Grid sx={{ maxWidth: '100%' }}>
         {coverImageUrl && (
           <Image
             src={`https:${coverImageUrl}`}
@@ -49,11 +49,11 @@ const PortfolioDetail = async ({ params }: { params: { slug: string } }) => {
           />
         )}
       </Grid>
-      <Grid item sx={{ maxWidth: IMAGE_DIMENSIONS.width, width: '100%' }}>
-        <Grid item>
+      <Grid sx={{ maxWidth: IMAGE_DIMENSIONS.width, width: '100%' }}>
+        <Grid>
           <AppText variant="h2">{title}</AppText>
         </Grid>
-        <Grid item sx={{ pt: 2 }}>
+        <Grid sx={{ pt: 2 }}>
           <Typography variant="body1" component="div">
             <ReactMarkdown>{summary}</ReactMarkdown>
           </Typography>
