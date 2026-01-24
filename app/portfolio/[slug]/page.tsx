@@ -28,7 +28,7 @@ const PortfolioDetail = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <Grid container flexDirection="column" alignItems="center" gap={3}>
-      <Grid item>
+      <Grid item sx={{ maxWidth: '100%' }}>
         {coverImageUrl && (
           <Image
             src={`https:${coverImageUrl}`}
@@ -39,6 +39,8 @@ const PortfolioDetail = async ({ params }: { params: { slug: string } }) => {
               objectFit: 'contain',
               borderRadius: '8px',
               backgroundColor: 'rgba(0,0,0,0.05)',
+              maxWidth: '100%',
+              height: 'auto',
             }}
           />
         )}
