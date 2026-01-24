@@ -12,7 +12,8 @@ const IMAGE_DIMENSIONS = {
   width: 800,
 };
 
-const Blog = async ({ params }: { params: { slug: string } }) => {
+const Blog = async (props: { params: Promise<{ slug: string }> }) => {
+  const params = await props.params;
   const blogSlug = params.slug;
   const blogEntry =
     await client.withoutUnresolvableLinks.getEntries<TypeBlogSkeleton>({

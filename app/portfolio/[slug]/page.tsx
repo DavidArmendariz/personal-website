@@ -12,7 +12,10 @@ const IMAGE_DIMENSIONS = {
   width: 800,
 };
 
-const PortfolioDetail = async ({ params }: { params: { slug: string } }) => {
+const PortfolioDetail = async (props: {
+  params: Promise<{ slug: string }>;
+}) => {
+  const params = await props.params;
   const portfolioSlug = params.slug;
   const portfolioEntry =
     await client.withoutUnresolvableLinks.getEntries<TypePortfolioSkeleton>({
