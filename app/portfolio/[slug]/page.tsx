@@ -35,7 +35,11 @@ const PortfolioDetail = async ({ params }: { params: { slug: string } }) => {
             alt={title}
             width={IMAGE_DIMENSIONS.width}
             height={IMAGE_DIMENSIONS.height}
-            style={{ objectFit: 'cover', borderRadius: '8px' }}
+            style={{
+              objectFit: 'contain',
+              borderRadius: '8px',
+              backgroundColor: 'rgba(0,0,0,0.05)',
+            }}
           />
         )}
       </Grid>
@@ -47,7 +51,9 @@ const PortfolioDetail = async ({ params }: { params: { slug: string } }) => {
           <AppText variant="body1">{summary}</AppText>
         </Grid>
         <Grid container gap={2} sx={{ pt: 4 }}>
-          {siteUrl && <ExternalLink href={siteUrl}>Visit Live Site</ExternalLink>}
+          {siteUrl && (
+            <ExternalLink href={siteUrl}>Visit Live Site</ExternalLink>
+          )}
         </Grid>
       </Grid>
     </Grid>
