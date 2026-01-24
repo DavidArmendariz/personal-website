@@ -1,6 +1,8 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Image from 'next/image';
 import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import ReactMarkdown from 'react-markdown';
 import AppText from '@/base-components/AppText';
 import client from '@/content/client';
 import { TypeBlogSkeleton } from '@/content/types';
@@ -36,7 +38,9 @@ const Blog = async ({ params }: { params: { slug: string } }) => {
           <AppText variant="h2">{title}</AppText>
         </Grid>
         <Grid item sx={{ pt: 5 }}>
-          <AppText variant="h5">{summary}</AppText>
+          <Typography variant="h5" component="div">
+            <ReactMarkdown>{summary}</ReactMarkdown>
+          </Typography>
         </Grid>
         <hr />
         <div>{documentToReactComponents(body)}</div>

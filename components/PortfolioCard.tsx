@@ -4,6 +4,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import Link from 'next/link';
+import ReactMarkdown from 'react-markdown';
 import AppText from '@/base-components/AppText';
 
 const PortfolioCard = ({
@@ -51,11 +52,15 @@ const PortfolioCard = ({
                 overflow: 'hidden',
                 WebkitBoxOrient: 'vertical',
                 WebkitLineClamp: 3,
+                '& p': { m: 0 },
+                '& ul': { m: 0, pl: 2 },
+                '& li': { m: 0 },
               }}
               variant="body2"
               color="text.secondary"
+              component="div"
             >
-              {summary}
+              <ReactMarkdown>{summary}</ReactMarkdown>
             </Typography>
           </CardContent>
         </CardActionArea>

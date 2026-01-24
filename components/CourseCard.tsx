@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import ReactMarkdown from 'react-markdown';
 import ExternalLink from './ExternalLink';
 
 const CourseCard = ({
@@ -42,11 +43,15 @@ const CourseCard = ({
             overflow: 'hidden',
             WebkitBoxOrient: 'vertical',
             WebkitLineClamp: 3,
+            '& p': { m: 0 },
+            '& ul': { m: 0, pl: 2 },
+            '& li': { m: 0 },
           }}
           variant="body2"
           color="text.secondary"
+          component="div"
         >
-          {summary}
+          <ReactMarkdown>{summary}</ReactMarkdown>
         </Typography>
       </CardContent>
       <CardActions sx={{ mt: 'auto' }}>

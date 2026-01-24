@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import AppText from '@/base-components/AppText';
 import Typography from '@mui/material/Typography';
+import ReactMarkdown from 'react-markdown';
 
 const BlogCard = ({
   title,
@@ -31,7 +32,17 @@ const BlogCard = ({
             <AppText bottomMargin variant="h5" component="div">
               {title}
             </AppText>
-            <Typography variant="body2">{summary}</Typography>
+            <Typography
+              variant="body2"
+              component="div"
+              sx={{
+                '& p': { m: 0 },
+                '& ul': { m: 0, pl: 2 },
+                '& li': { m: 0 },
+              }}
+            >
+              <ReactMarkdown>{summary}</ReactMarkdown>
+            </Typography>
           </CardContent>
         </CardActionArea>
       </Link>

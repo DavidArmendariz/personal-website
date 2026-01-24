@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import ReactMarkdown from 'react-markdown';
 import AppText from '@/base-components/AppText';
 import client from '@/content/client';
 import { TypePortfolioSkeleton } from '@/content/types';
@@ -26,6 +28,8 @@ const PortfolioDetail = async ({ params }: { params: { slug: string } }) => {
     portfolioEntry.items[0].fields;
   const coverImageUrl = coverImage?.fields.file?.url || '';
 
+  console.log(summary);
+
   return (
     <Grid container flexDirection="column" alignItems="center" gap={3}>
       <Grid item sx={{ maxWidth: '100%' }}>
@@ -50,7 +54,9 @@ const PortfolioDetail = async ({ params }: { params: { slug: string } }) => {
           <AppText variant="h2">{title}</AppText>
         </Grid>
         <Grid item sx={{ pt: 2 }}>
-          <AppText variant="body1">{summary}</AppText>
+          <Typography variant="body1" component="div">
+            <ReactMarkdown>{summary}</ReactMarkdown>
+          </Typography>
         </Grid>
         <Grid container gap={2} sx={{ pt: 4 }}>
           {siteUrl && (
