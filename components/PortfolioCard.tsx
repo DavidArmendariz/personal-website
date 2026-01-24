@@ -33,9 +33,13 @@ const PortfolioCard = ({
         <CardActionArea>
           <CardMedia
             component="img"
-            alt="portfolio item"
-            height="140"
+            alt={title}
             image={coverImage}
+            sx={{
+              height: 180,
+              objectFit: 'contain',
+              bgcolor: 'background.paper',
+            }}
           />
           <CardContent>
             <AppText bottomMargin variant="h5" component="div">
