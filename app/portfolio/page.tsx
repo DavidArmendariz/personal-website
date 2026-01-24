@@ -27,12 +27,12 @@ const Page = async () => {
     >
       {portfolioItems.length ? (
         portfolioItems.map((portfolioItem, index) => {
-          const { title, repoUrl, coverImage, summary, siteUrl } =
+          const { title, coverImage, summary, slug } =
             portfolioItem.fields;
           const coverImageUrl = coverImage?.fields.file?.url;
           return (
             <Grid
-              key={`${repoUrl}-${index}`}
+              key={`${title}-${index}`}
               item
               xs="auto"
               sx={{ display: 'flex' }}
@@ -41,8 +41,7 @@ const Page = async () => {
                 title={title}
                 coverImage={coverImageUrl}
                 summary={summary}
-                repoUrl={repoUrl}
-                siteUrl={siteUrl}
+                slug={slug || portfolioItem.sys.id}
               />
             </Grid>
           );

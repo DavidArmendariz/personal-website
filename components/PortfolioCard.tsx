@@ -1,23 +1,21 @@
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
+import Link from 'next/link';
 import AppText from '@/base-components/AppText';
-import ExternalLink from './ExternalLink';
 
 const PortfolioCard = ({
   title,
   coverImage,
   summary,
-  repoUrl,
-  siteUrl,
+  slug,
 }: {
   title: string;
   coverImage?: string;
   summary: string;
-  repoUrl?: string;
-  siteUrl?: string;
+  slug: string;
 }) => {
   return (
     <Card
@@ -28,33 +26,36 @@ const PortfolioCard = ({
         flexDirection: 'column',
       }}
     >
-      <CardMedia
-        component="img"
-        alt="portfolio item"
-        height="140"
-        image={coverImage}
-      />
-      <CardContent>
-        <AppText bottomMargin variant="h5" component="div">
-          {title}
-        </AppText>
-        <Typography
-          sx={{
-            display: '-webkit-box',
-            overflow: 'hidden',
-            WebkitBoxOrient: 'vertical',
-            WebkitLineClamp: 3,
-          }}
-          variant="body2"
-          color="text.secondary"
-        >
-          {summary}
-        </Typography>
-      </CardContent>
-      <CardActions sx={{ mt: 'auto' }}>
-        {repoUrl && <ExternalLink href={repoUrl}>Go to repo</ExternalLink>}
-        {siteUrl && <ExternalLink href={siteUrl}>Go to site</ExternalLink>}
-      </CardActions>
+      <Link
+        href={`/portfolio/${slug}`}
+        style={{ textDecoration: 'none', color: 'inherit' }}
+      >
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            alt="portfolio item"
+            height="140"
+            image={coverImage}
+          />
+          <CardContent>
+            <AppText bottomMargin variant="h5" component="div">
+              {title}
+            </AppText>
+            <Typography
+              sx={{
+                display: '-webkit-box',
+                overflow: 'hidden',
+                WebkitBoxOrient: 'vertical',
+                WebkitLineClamp: 3,
+              }}
+              variant="body2"
+              color="text.secondary"
+            >
+              {summary}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Link>
     </Card>
   );
 };
